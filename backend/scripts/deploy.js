@@ -2,40 +2,54 @@
 
 const fs = require("fs/promises");
 const hre = require("hardhat");
+const path = require("path");
 
 async function main() {
+   //PrizePool deployment
    const PrizePool = await hre.ethers.deployContract("PrizePool");
    await PrizePool.waitForDeployment();
 
-   console.log(`Contract deployed to ${await PrizePool.getAddress()}`);
-
    const prizePoolAddress = await PrizePool.getAddress();
-   const signer = await hre.ethers.getSigners();
+   const prizePoolSigner = await hre.ethers.getSigners();
 
    await writeDeploymentInfo(
       PrizePool,
       prizePoolAddress,
       "PrizePool.json",
-      signer[0].address,
+      prizePoolSigner[0].address,
+   );
+
+   //SampleNFT deployment
+   const SampleNFT = await hre.ethers.deployContract("SampleNFT");
+   await SampleNFT.waitForDeployment();
+
+   const sampleNFTAddress = await SampleNFT.getAddress();
+   const sampleNFTSigner = await hre.ethers.getSigners();
+
+   await writeDeploymentInfo(
+      SampleNFT,
+      sampleNFTAddress,
+      "SampleNFT.json",
+      sampleNFTSigner[0].address,
    );
 }
 
-async function writeDeploymentInfo(
-   contract,
-   prizePoolAddress,
-   filename = "",
-   signer,
-) {
+async function writeDeploymentInfo(contract, address, filename = "", signer) {
    const data = {
       contract: {
-         address: prizePoolAddress,
+         address: address,
          signerAddress: signer,
          abi: contract.interface.format(),
       },
    };
 
    const content = JSON.stringify(data, null, 2);
-   await fs.writeFile(filename, content, { encoding: "utf-8" });
+
+   const abiDir = path.join(__dirname, "abi");
+   await fs.mkdir(abiDir, { recursive: true });
+
+   const filePath = path.join(abiDir, filename);
+   await fs.writeFile(filePath, content, { encoding: "utf-8" });
 }
 
 main()
