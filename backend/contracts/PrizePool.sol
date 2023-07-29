@@ -80,12 +80,12 @@ contract PrizePool {
         _;
     }
 
-    modifier canWithdrawNFT() {
+    modifier canWithdrawNFT(uint id) {
         require(
             contestEnded,
             "Please wait until the voting period is over to withdraw your NFT"
         );
-        require(participants[msg.sender].nftId != 0, "No NFT to withdraw");
+        require(participants[msg.sender].nftId == id, "You must withdraw the NFT that you submitted, not a different one");
         _;
     }
 
@@ -174,7 +174,7 @@ contract PrizePool {
         require(sent, "Withdraw failed, try again");
     }
 
-    function withdrawNFT() external canWithdrawNFT {
+    function withdrawNFT(uint id) external canWithdrawNFT(id) {
         participants[msg.sender].nft.safeTransferFrom(
             address(this),
             msg.sender,
