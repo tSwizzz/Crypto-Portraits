@@ -10,7 +10,7 @@ contract SampleNFT is ERC721URIStorage, Ownable {
         address _to,
         uint _tokenId,
         string calldata _uri
-    ) external onlyOwner {
+    ) external {
         _mint(_to, _tokenId);
         _setTokenURI(_tokenId, _uri);
     }
