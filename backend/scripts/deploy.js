@@ -35,9 +35,9 @@ async function main() {
 
    //These are nfts that will be minted upon deployment and sent to different wallets for testing
    const nftArray = [
-      "ipfs://QmWX82Pp86ai7KsZ3apXiSgXXnBJptqStR9hL5bTD13wxX",
-      "ipfs://QmWkAFK6F9GUzLGq7enfqev1GWP1jZ3sxw4expkKQRHTzN",
-      "ipfs://QmeuLkv4AQvR6M6fCCQ47Qinv9unSay6xHqrjGgzgo81yi",
+      "ipfs://QmRB8vUVjUfCWNGQCFg9VvNxQP1QVBX3Aibx7uPQHCrKkq",
+      "ipfs://QmRLoJidkk1CJTzgFzYNuRM8HovGzFfXfoH4ghBbHKQ8um",
+      "ipfs://QmSLdumK3nZ2RdyPYu7cTfzEhf4bBXezfRzeb7Lx5oF4uS",
    ];
    const myAddresses = [
       "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
@@ -49,9 +49,9 @@ async function main() {
       await SampleNFT.mint(myAddresses[k], k + 1, nftArray[k]);
    }
 
-   console.log(await SampleNFT.balanceOf(myAddresses[0]));
-   console.log(await SampleNFT.balanceOf(myAddresses[1]));
-   console.log(await SampleNFT.balanceOf(myAddresses[2]));
+   //console.log(await SampleNFT.balanceOf(myAddresses[0]));
+   //console.log(await SampleNFT.balanceOf(myAddresses[1]));
+   //console.log(await SampleNFT.balanceOf(myAddresses[2]));
 }
 
 async function writeDeploymentInfo(contract, address, filename = "", signer) {
