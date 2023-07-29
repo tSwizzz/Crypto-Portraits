@@ -32,6 +32,20 @@ async function main() {
       "SampleNFT.json",
       sampleNFTSigner[0].address,
    );
+
+   //These are nfts that will be minted upon deployment and sent to wallet for testing
+   const nftArray = [
+      "ipfs://QmWX82Pp86ai7KsZ3apXiSgXXnBJptqStR9hL5bTD13wxX",
+      "ipfs://QmWkAFK6F9GUzLGq7enfqev1GWP1jZ3sxw4expkKQRHTzN",
+      "ipfs://QmeuLkv4AQvR6M6fCCQ47Qinv9unSay6xHqrjGgzgo81yi",
+   ];
+   const myAddr = "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266";
+
+   for (let k = 0; k < nftArray.length; k++) {
+      await SampleNFT.mint(myAddr, k + 1, nftArray[k]);
+   }
+
+   console.log(await SampleNFT.balanceOf(myAddr));
 }
 
 async function writeDeploymentInfo(contract, address, filename = "", signer) {
