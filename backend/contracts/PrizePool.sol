@@ -123,8 +123,7 @@ contract PrizePool {
         potentialWithdrawBalance[msg.sender] += msg.value;
         allParticipants.push(msg.sender);
 
-        //make this equal to 3 to make testing easier
-        if (allParticipants.length == 5) {
+        if (allParticipants.length == 3) {
             beginContest = true;
             endTime = block.timestamp + 1 days;
         }
