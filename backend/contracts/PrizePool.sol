@@ -10,6 +10,7 @@ contract PrizePool {
 
     uint prizePool;
     uint endTime;
+    uint ownersCut; //10% of prizePool goes to owner if there is a winner
 
     bool beginContest;
     bool contestEnded;
@@ -85,7 +86,10 @@ contract PrizePool {
             contestEnded,
             "Please wait until the voting period is over to withdraw your NFT"
         );
-        require(participants[msg.sender].nftId == id, "You must withdraw the NFT that you submitted, not a different one");
+        require(
+            participants[msg.sender].nftId == id,
+            "You must withdraw the NFT that you submitted, not a different one"
+        );
         _;
     }
 
@@ -198,13 +202,25 @@ contract PrizePool {
             }
         }
 
-        //if winner exists, send funds to prizePool
+        //if winner exists, send funds to prizePool and give 10% to contract owner
         if (winner != address(0)) {
             for (uint k; k < allParticipants.length; k++) {
                 prizePool += potentialWithdrawBalance[allParticipants[k]];
                 potentialWithdrawBalance[allParticipants[k]] = 0;
             }
+
+            ownersCut = (prizePool * 10) / 100;
+            prizePool -= ownersCut;
         }
+    }
+
+    function withrawOwnersCut() external onlyOwner {
+        //probably don't need to worry about reentrancy in this case?
+        uint amount = ownersCut;
+        ownersCut = 0;
+
+        (bool sent, ) = payable(msg.sender).call{value: amount}("");
+        require(sent, "Transfer failed");
     }
 
     function beginContestValue() public view returns (bool) {
