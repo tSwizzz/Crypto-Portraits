@@ -4,7 +4,7 @@ import { ethers } from "ethers";
 let contract;
 let signer;
 const provider = new ethers.BrowserProvider(window.ethereum);
-const address = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+const address = "0x610178dA211FEF7D417bC0e6FeD39F05609AD788";
 const abi = [
    "constructor() nonpayable",
    "function allParticipants(uint256) view returns (address)",
