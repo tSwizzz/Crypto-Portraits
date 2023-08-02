@@ -19,7 +19,7 @@ function NavbarTop({ connect, connected }) {
          >
             <Container fluid>
                <Navbar.Brand href="/" className="navbar-brand ">
-                  <span className="wave">NFT Prize Pool</span>
+                  <span>NFT Prize Pool</span>
                </Navbar.Brand>
                <Navbar.Toggle />
                <Navbar.Collapse>
@@ -34,11 +34,11 @@ function NavbarTop({ connect, connected }) {
                   <Nav>
                      {!connected ? (
                         <Button onClick={connect} className="connect-button">
-                           Connect to Metamask
+                           Connect to MetaMask
                         </Button>
                      ) : (
                         <p className="connected-message">
-                           Connected to Metamask
+                           Connected to MetaMask
                         </p>
                      )}
                   </Nav>
