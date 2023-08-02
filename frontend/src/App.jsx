@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar.jsx";
 import Submit from "./components/Submit.jsx";
 import Votes from "./components/Votes.jsx";
-
+import Home from "./components/Home.jsx";
 import { useState, useEffect } from "react";
 import { connect, getContract } from "./components/SmartContract.jsx";
 
@@ -41,6 +41,7 @@ function App() {
 
          <div className="container">
             <Routes>
+               <Route path="/" element={<Home />} />
                <Route
                   path="submit-nft"
                   element={<Submit contract={contract} />}
