@@ -1,19 +1,18 @@
 /** @format */
 
-@keyframes rainbowText {
-   0% {
-      background-position: 0% 50%;
-   }
-   100% {
-      background-position: 100% 50%;
-   }
-}
-
 .navbar-container {
-   background: linear-gradient(to right, #000, #222);
-   border-bottom: 2px solid orange;
+   background: linear-gradient(to right, #000, #122, #000);
+   border-bottom: 2px solid;
+   border-image: linear-gradient(
+      to right,
+      #ff0000,
+      #ff9900,
+      #33cc33,
+      #3399ff,
+      #cc33ff
+   );
+   border-image-slice: 1;
 }
-
 .navbar-brand {
    background-image: linear-gradient(
       to right,
@@ -26,48 +25,37 @@
    background-clip: text;
    -webkit-background-clip: text;
    color: transparent;
-   animation: rainbowText 10s infinite;
    font-size: 28px;
 }
 
 .nav-link {
    color: lightblue;
-   font-size: 16px;
    font-weight: bold;
-   margin-right: 20px;
-   text-decoration: none;
-   transition: color 0.3s ease;
+   margin-right: 22px;
 }
 
 .nav-link:hover {
    color: #ffcc00;
 }
-
 .connect-button {
-   background: #ff9900;
+   background: orange;
    color: black;
    border: none;
-   border-radius: 6px;
-   padding: 12px 24px;
+   padding: 12px 18px;
    font-size: 16px;
    font-weight: bold;
    cursor: pointer;
-   box-shadow: 0 3px 8px rgba(255, 153, 0, 0.3); /* Reduce the shadow */
-   transition: background-color 0.3s ease;
 }
 
 .connect-button:hover {
-   background: #ff7700;
+   background: darkorange;
 }
 
 .connected-message {
-   font-size: 16px;
    font-weight: bold;
-   margin-top: 8px;
-   display: flex;
-   justify-content: center;
-   padding: 6px 12px;
-   border-radius: 6px;
+   margin-top: 10px;
+   padding: 10px 16px;
+   border-radius: 70px;
    background-color: #00ff66;
-   box-shadow: 0 3px 6px rgba(0, 255, 102, 0.4);
+   box-shadow: 0 3px 6px rgba(0, 255, 102, 0.3);
 }
