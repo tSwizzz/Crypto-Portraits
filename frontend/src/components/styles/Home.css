@@ -1,0 +1,43 @@
+/** @format */
+
+.home-container {
+   color: white;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+   margin-top: 40px;
+   font-family: "Arial";
+}
+
+.home-title {
+   font-size: 60px;
+   font-weight: bold;
+   margin-bottom: 1rem;
+}
+
+.nft-pic img {
+   max-width: 75%;
+}
+.home-body {
+   font-size: 1.3rem;
+   max-width: 600px;
+   margin-bottom: 2rem;
+}
+
+.submit-btn:hover {
+   background-color: #ff916d; /* Lighter coral color on hover */
+}
+
+.submit-btn {
+   background-color: lightcoral;
+   color: white;
+   font-size: 18px;
+   font-weight: bold;
+   padding: 12px 22px;
+   border: none;
+   border-radius: 30px;
+   cursor: pointer;
+   margin-top: 30px;
+}
