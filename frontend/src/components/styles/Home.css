@@ -1,4 +1,29 @@
 /** @format */
+@import url("https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap");
+
+@keyframes rainbow {
+   0% {
+      color: red;
+   }
+   17% {
+      color: orange;
+   }
+   34% {
+      color: yellow;
+   }
+   50% {
+      color: green;
+   }
+   66% {
+      color: blue;
+   }
+   83% {
+      color: indigo;
+   }
+   100% {
+      color: violet;
+   }
+}
 
 .home-container {
    color: white;
@@ -15,6 +40,8 @@
    font-size: 60px;
    font-weight: bold;
    margin-bottom: 1rem;
+   animation: rainbow 2s infinite alternate;
+   font-family: "Comic Neue";
 }
 
 .nft-pic img {
@@ -27,7 +54,7 @@
 }
 
 .submit-btn:hover {
-   background-color: #ff916d; /* Lighter coral color on hover */
+   background-color: #ff916d;
 }
 
 .submit-btn {
