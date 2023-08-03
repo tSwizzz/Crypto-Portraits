@@ -6,7 +6,6 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import React from "react";
 import "./styles/Navbar.css";
-import "animate.css";
 
 function NavbarTop({ connect, connected }) {
    return (
