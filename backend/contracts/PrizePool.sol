@@ -4,7 +4,7 @@ import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
 
 contract PrizePool {
-    address public owner;
+    address public owner; 
     address winner;
     address[] public allParticipants;
 
@@ -52,10 +52,6 @@ contract PrizePool {
         require(
             IERC721(nft).ownerOf(nftId) == msg.sender,
             "You must submit an NFT you own"
-        );
-        require(
-            !participants[msg.sender].submitted,
-            "You have already submitted an NFT for this contest"
         );
         require(
             msg.value == 1000 wei,
@@ -212,15 +208,6 @@ contract PrizePool {
             ownersCut = (prizePool * 10) / 100;
             prizePool -= ownersCut;
         }
-    }
-
-    function withrawOwnersCut() external onlyOwner {
-        //probably don't need to worry about reentrancy in this case?
-        uint amount = ownersCut;
-        ownersCut = 0;
-
-        (bool sent, ) = payable(msg.sender).call{value: amount}("");
-        require(sent, "Transfer failed");
     }
 
     function beginContestValue() public view returns (bool) {
