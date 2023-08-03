@@ -6,7 +6,7 @@ import Submit from "./components/Submit.jsx";
 import Votes from "./components/Votes.jsx";
 import Home from "./components/Home.jsx";
 import { useState, useEffect } from "react";
-import { connect, getContract } from "./components/SmartContract.jsx";
+import { connect, getAccess } from "./components/SmartContract.jsx";
 
 function App() {
    const [contract, setContract] = useState(null);
@@ -22,7 +22,7 @@ function App() {
 
    const handleInit = () => {
       setConnected(true);
-      getContract().then(({ contract, signer }) => {
+      getAccess().then(({ contract }) => {
          setContract(contract);
       });
    };
@@ -44,7 +44,7 @@ function App() {
                <Route path="/" element={<Home />} />
                <Route
                   path="submit-nft"
-                  element={<Submit contract={contract} />}
+                  element={<Submit contract={contract} connected={connected} />}
                />
                <Route path="votes" element={<Votes contract={contract} />} />
             </Routes>
