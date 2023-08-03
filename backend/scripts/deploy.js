@@ -39,19 +39,13 @@ async function main() {
       "ipfs://QmRLoJidkk1CJTzgFzYNuRM8HovGzFfXfoH4ghBbHKQ8um",
       "ipfs://QmSLdumK3nZ2RdyPYu7cTfzEhf4bBXezfRzeb7Lx5oF4uS",
    ];
-   const myAddresses = [
-      "0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
-      "0x90F79bf6EB2c4f870365E785982E1f101E93b906",
-      "0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65",
-   ];
+   const myAddress = "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266";
 
    for (let k = 0; k < nftArray.length; k++) {
-      await SampleNFT.mint(myAddresses[k], k + 1, nftArray[k]);
+      await SampleNFT.mint(myAddress, k + 1, nftArray[k]);
    }
 
-   //console.log(await SampleNFT.balanceOf(myAddresses[0]));
-   //console.log(await SampleNFT.balanceOf(myAddresses[1]));
-   //console.log(await SampleNFT.balanceOf(myAddresses[2]));
+   console.log(await SampleNFT.balanceOf(myAddress));
 }
 
 async function writeDeploymentInfo(contract, address, filename = "", signer) {
