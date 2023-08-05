@@ -10,13 +10,13 @@ Rules:
   Total of 3 users per competition. 
 
 Details:
-  -If a tie occurs, then there are no winners and all funds are withdrawable to participants. 
-  -NFTs will be held in the contract and withdrawable after voting period ends. 
-  -Upon deployment, 3 NFTs will be minted to the first signer address on the Hardhat network (0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266). You can see how the website works by          submitting these NFTs yourself. 
+  If a tie occurs, then there are no winners and all funds are withdrawable to participants. 
+  NFTs will be held in the contract and withdrawable after voting period ends. 
+  Upon deployment, 3 NFTs will be minted to the first signer address on the Hardhat network (0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266). You can see how the website works by          submitting these NFTs yourself. 
 
-Guide:
--Install MetaMask
--Open terminal:
+Guide: Have MetaMask installed.
+
+Open terminal:
   1) cd backend
   2) npm install
   3) npx hardhat node
