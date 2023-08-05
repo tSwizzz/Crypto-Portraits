@@ -33,13 +33,13 @@ async function main() {
       sampleNFTSigner[0].address,
    );
 
-   //These are nfts that will be minted upon deployment and sent to different wallets for testing
+   //These are nfts that will be minted upon deployment and sent to one wallet for testing
    const nftArray = [
       "ipfs://QmRB8vUVjUfCWNGQCFg9VvNxQP1QVBX3Aibx7uPQHCrKkq",
       "ipfs://QmRLoJidkk1CJTzgFzYNuRM8HovGzFfXfoH4ghBbHKQ8um",
       "ipfs://QmSLdumK3nZ2RdyPYu7cTfzEhf4bBXezfRzeb7Lx5oF4uS",
    ];
-   const myAddress = "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266";
+   const myAddress = prizePoolSigner[0].address;
 
    for (let k = 0; k < nftArray.length; k++) {
       await SampleNFT.mint(myAddress, k + 1, nftArray[k]);
