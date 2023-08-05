@@ -5,13 +5,13 @@ This is a decentralized voting platform where users can submit an NFT that they 
 The user with the most likes/votes on their NFT by the end of the voting period wins the prize pool money!
 
 Rules:
-  -Contestant must pay 1000 wei contribution to prize pool
-  -Voters must lock 3000 wei before voting. (Reduces rigging?). Withdrawable after voting period ends.
-  -Total of 3 users per competition.
+  Contestant must pay 1000 wei contribution to prize pool. 
+  Voters must lock 3000 wei before voting. (Reduces rigging?). Withdrawable after voting period ends. 
+  Total of 3 users per competition. 
 
 Details:
-  -If a tie occurs, then there are no winners and all funds are withdrawable to participants.
-  -NFTs will be held in the contract and withdrawable after voting period ends.
+  -If a tie occurs, then there are no winners and all funds are withdrawable to participants. 
+  -NFTs will be held in the contract and withdrawable after voting period ends. 
   -Upon deployment, 3 NFTs will be minted to the first signer address on the Hardhat network (0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266). You can see how the website works by          submitting these NFTs yourself. 
 
 Guide:
