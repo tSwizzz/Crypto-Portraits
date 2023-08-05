@@ -4,26 +4,28 @@ const provider = new ethers.BrowserProvider(window.ethereum);
 let signer;
 
 let prizePoolContract;
-const prizePoolAddress = "0x610178dA211FEF7D417bC0e6FeD39F05609AD788";
+const prizePoolAddress = "0x720472c8ce72c2A2D711333e064ABD3E6BbEAdd3";
 const prizePoolAbi = [
    "constructor() nonpayable",
    "function allParticipants(uint256) view returns (address)",
-   "function beginContestValue() view returns (bool)",
-   "function contestEndedValue() view returns (bool)",
    "function end()",
+   "function getAllParticipants() view returns (address[])",
+   "function getBeginContestValue() view returns (bool)",
+   "function getContestEndedValue() view returns (bool)",
+   "function getNFTId(address participantAddr) view returns (uint256)",
    "function onERC721Received(address operator, address from, uint256 tokenId, bytes data) returns (bytes4)",
    "function owner() view returns (address)",
+   "function participants(address) view returns (address nft, address owner, uint256 nftId, uint256 numOfVotes, bool submitted)",
    "function submitNFT(address nft, uint256 nftId) payable",
    "function vote() payable",
    "function withdrawAllFunds()",
    "function withdrawLockedEther()",
    "function withdrawNFT(uint256 id)",
-   "function withdrawOwnersCut()",
    "function withdrawPrizePool()",
 ];
 
 let nftContract;
-const nftAddress = "0xB7f8BC63BbcaD18155201308C8f3540b07f84F5e";
+const nftAddress = "0xe8D2A1E88c91DCd5433208d4152Cc4F399a7e91d";
 const nftAbi = [
    "constructor() nonpayable",
    "event Approval(address indexed owner, address indexed approved, uint256 indexed tokenId)",
@@ -102,4 +104,19 @@ export async function submit() {
    //if ((await nftContract.balanceOf(prizePoolAddress)) == 3) {
    //   //begins contest
    //}
+}
+
+export async function displayNFTs() {
+   await getAccess();
+   let addr = await prizePoolContract.allParticipants(0);
+   let addrData = await prizePoolContract.participants(addr);
+   let id = addrData.nftId;
+
+   const uri = await nftContract.tokenURI(id);
+   const link = getUrl(uri);
+   return link;
+}
+
+function getUrl(ipfs) {
+   return "http://localhost:8080/ipfs" + ipfs.split(":")[1].slice(1);
 }

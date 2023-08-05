@@ -42,10 +42,7 @@ function App() {
          <div className="container">
             <Routes>
                <Route path="/" element={<Home />} />
-               <Route
-                  path="submit-nft"
-                  element={<Submit contract={contract} connected={connected} />}
-               />
+               <Route path="submit-nft" element={<Submit />} />
                <Route path="votes" element={<Votes contract={contract} />} />
             </Routes>
          </div>

@@ -1,12 +1,10 @@
 /** @format */
 
-import React, { useState } from "react";
+import React from "react";
 import "./styles/Submit.css";
 import { approveNFT, submit } from "./SmartContract.jsx";
 
 function Submit({ contract }) {
-   const [submitNum, setSubmitNum] = useState(0);
-
    const handleApproveNFT = async () => {
       approveNFT();
    };
@@ -16,17 +14,24 @@ function Submit({ contract }) {
    };
 
    return (
-      <>
-         <div>
+      <div className="submit-container">
+         <div className="header">
+            <h1>Time To Win Some Big Bucks $$$</h1>
+         </div>
+         <div className="submit-box">
+            <h2>Approve NFT</h2>
             <input
                type="number"
                id="token-id-approve"
                placeholder="Token ID"
                min="0"
             />
-            <button onClick={handleApproveNFT}>Approve NFT</button>
+            <button className="handle-btn" onClick={handleApproveNFT}>
+               Approve NFT
+            </button>
          </div>
-         <div>
+         <div className="submit-box">
+            <h2>Submit NFT</h2>
             <input type="number" id="token-id" placeholder="Token ID" min="1" />
             <input
                type="number"
@@ -34,9 +39,11 @@ function Submit({ contract }) {
                placeholder="1000 wei to submit NFT"
                min="0"
             />
-            <button onClick={handleSubmitNFT}>Submit NFT</button>
+            <button className="handle-btn" onClick={handleSubmitNFT}>
+               Submit NFT
+            </button>
          </div>
-      </>
+      </div>
    );
 }
 

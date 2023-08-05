@@ -10,7 +10,6 @@ contract PrizePool {
 
     uint prizePool;
     uint endTime;
-    uint ownersCut; //10% of prizePool goes to owner if there is a winner
 
     bool beginContest;
     bool contestEnded;
@@ -30,7 +29,8 @@ contract PrizePool {
         uint numOfVotes; //can maybe utilize this
         bool submitted; //participants can only submit 1 NFT per contest
     }
-    mapping(address => NFT) participants;
+    mapping(address => NFT) public participants;
+
 
     mapping(address => bool) voters;
     mapping(address => uint) lockedEther; //voter must lock 3000 wei before allowed to vote; reduces rigging of votes.. right?
@@ -204,17 +204,22 @@ contract PrizePool {
                 prizePool += potentialWithdrawBalance[allParticipants[k]];
                 potentialWithdrawBalance[allParticipants[k]] = 0;
             }
-
-            ownersCut = (prizePool * 10) / 100;
-            prizePool -= ownersCut;
         }
     }
 
-    function beginContestValue() public view returns (bool) {
+    function getAllParticipants() public view returns (address[] memory) {
+        return allParticipants;
+    }
+
+    function getNFTId(address participantAddr) public view returns (uint) {
+        return participants[participantAddr].nftId;
+    }
+
+    function getBeginContestValue() public view returns (bool) {
         return beginContest;
     }
 
-    function contestEndedValue() public view returns (bool) {
+    function getContestEndedValue() public view returns (bool) {
         return contestEnded;
     }
 }

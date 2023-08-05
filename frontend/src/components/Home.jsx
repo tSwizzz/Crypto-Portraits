@@ -11,8 +11,7 @@ function Home() {
          <h1 className="home-title">Welcome to NFT Prize Pool</h1>
          <p className="home-body">
             Submit your NFT art against 2 other competitors and stand a chance
-            to win the prize pool cash! Besides... 10% goes to me, so hurry up
-            and give me money!
+            to win the prize pool cash! LETS GOOO
          </p>
          <div className="nft-pic">
             <img src={baycImage} />
