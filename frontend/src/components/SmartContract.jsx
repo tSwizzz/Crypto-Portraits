@@ -4,7 +4,7 @@ const provider = new ethers.BrowserProvider(window.ethereum);
 let signer;
 
 let prizePoolContract;
-const prizePoolAddress = "0x720472c8ce72c2A2D711333e064ABD3E6BbEAdd3";
+const prizePoolAddress = "0x4ed7c70F96B99c776995fB64377f0d4aB3B0e1C1";
 const prizePoolAbi = [
    "constructor() nonpayable",
    "function allParticipants(uint256) view returns (address)",
@@ -25,7 +25,7 @@ const prizePoolAbi = [
 ];
 
 let nftContract;
-const nftAddress = "0xe8D2A1E88c91DCd5433208d4152Cc4F399a7e91d";
+const nftAddress = "0x322813Fd9A801c5507c9de605d63CEA4f2CE6c44";
 const nftAbi = [
    "constructor() nonpayable",
    "event Approval(address indexed owner, address indexed approved, uint256 indexed tokenId)",
@@ -70,29 +70,14 @@ export const getAccess = async () => {
    return { signer: signer, contract: prizePoolContract };
 };
 
-export async function approveNFT() {
-   await getAccess();
-   const id = document.getElementById("token-id-approve").value;
-
-   await nftContract
-      .approve(prizePoolAddress, id)
-      .then(() => alert("Your NFT is now approved!"))
-      .catch((error) => {
-         if (error.data) alert(error.data.message);
-         else alert(error);
-      });
-}
-
 export async function submit() {
    await getAccess();
    const id = document.getElementById("token-id").value;
    const amount = document.getElementById("buy-in-amount").value;
 
+   await nftContract.approve(prizePoolAddress, id);
    await prizePoolContract
       .submitNFT(nftAddress, id, { value: amount })
-      .then(() => {
-         alert("Your NFT has been submitted to the contest! Stay tuned!");
-      })
       .catch((error) => {
          if (error.data.message) {
             alert(error.data.message);
@@ -100,10 +85,6 @@ export async function submit() {
             alert(error);
          }
       });
-
-   //if ((await nftContract.balanceOf(prizePoolAddress)) == 3) {
-   //   //begins contest
-   //}
 }
 
 export async function displayNFTs() {

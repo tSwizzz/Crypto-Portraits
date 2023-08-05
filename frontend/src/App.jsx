@@ -7,6 +7,7 @@ import Votes from "./components/Votes.jsx";
 import Home from "./components/Home.jsx";
 import { useState, useEffect } from "react";
 import { connect, getAccess } from "./components/SmartContract.jsx";
+import "./styles/App.css";
 
 function App() {
    const [contract, setContract] = useState(null);

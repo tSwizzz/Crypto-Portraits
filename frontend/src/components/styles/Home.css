@@ -40,7 +40,7 @@
    font-size: 60px;
    font-weight: bold;
    margin-bottom: 1rem;
-   animation: rainbow 2s infinite alternate;
+   animation: rainbow 5s infinite alternate;
    font-family: "Comic Neue";
 }
 
@@ -48,7 +48,7 @@
    max-width: 75%;
 }
 .home-body {
-   font-size: 1.3rem;
+   font-size: 28px;
    max-width: 600px;
    margin-bottom: 2rem;
 }
