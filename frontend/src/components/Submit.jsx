@@ -10,7 +10,7 @@ function Submit({ contract }) {
    const [submitted, setSubmitted] = useState(false);
    const [submitCount, setSubmitCount] = useState(0);
 
-   const newSubmitCount = 3;
+   const newSubmitCount = 0; //fix later
    localStorage.setItem("submitCount", newSubmitCount);
 
    useEffect(() => {
