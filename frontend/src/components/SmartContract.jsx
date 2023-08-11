@@ -4,7 +4,7 @@ const provider = new ethers.BrowserProvider(window.ethereum);
 let signer;
 
 let prizePoolContract;
-const prizePoolAddress = "0x4ed7c70F96B99c776995fB64377f0d4aB3B0e1C1";
+const prizePoolAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
 const prizePoolAbi = [
    "constructor() nonpayable",
    "function allParticipants(uint256) view returns (address)",
@@ -12,7 +12,7 @@ const prizePoolAbi = [
    "function getAllParticipants() view returns (address[])",
    "function getBeginContestValue() view returns (bool)",
    "function getContestEndedValue() view returns (bool)",
-   "function getNFTId(address participantAddr) view returns (uint256)",
+   "function getNFTIdArray() view returns (uint256[])",
    "function onERC721Received(address operator, address from, uint256 tokenId, bytes data) returns (bytes4)",
    "function owner() view returns (address)",
    "function participants(address) view returns (address nft, address owner, uint256 nftId, uint256 numOfVotes, bool submitted)",
@@ -25,7 +25,7 @@ const prizePoolAbi = [
 ];
 
 let nftContract;
-const nftAddress = "0x322813Fd9A801c5507c9de605d63CEA4f2CE6c44";
+const nftAddress = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
 const nftAbi = [
    "constructor() nonpayable",
    "event Approval(address indexed owner, address indexed approved, uint256 indexed tokenId)",
@@ -87,15 +87,23 @@ export async function submit() {
       });
 }
 
+export async function contestState() {
+   await getAccess();
+   let value = await prizePoolContract.getBeginContestValue();
+   return value;
+}
+
 export async function displayNFTs() {
    await getAccess();
-   let addr = await prizePoolContract.allParticipants(0);
-   let addrData = await prizePoolContract.participants(addr);
-   let id = addrData.nftId;
+   let idArray = await prizePoolContract.getNFTIdArray();
 
-   const uri = await nftContract.tokenURI(id);
-   const link = getUrl(uri);
-   return link;
+   let nftArray = [];
+   for (let k = 0; k < 3; k++) {
+      const uri = await nftContract.tokenURI(idArray[k]);
+      const link = getUrl(uri);
+      nftArray.push(link);
+   }
+   return nftArray;
 }
 
 function getUrl(ipfs) {

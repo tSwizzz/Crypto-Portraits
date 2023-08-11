@@ -1,0 +1,47 @@
+/** @format */
+
+.votes-container {
+   height: 100vh;
+   display: flex;
+   justify-content: center;
+   margin-top: 100px;
+}
+.fav-word {
+   background-image: linear-gradient(
+      to right,
+      #ff0000,
+      #ff9900,
+      #33cc33,
+      #3399ff,
+      #cc33ff
+   );
+   background-clip: text;
+   -webkit-background-clip: text;
+   color: transparent;
+}
+.votes-header {
+   display: flex;
+   justify-content: center;
+   margin-bottom: 90px;
+   font-size: 70px;
+   color: #111;
+   font-weight: bolder;
+}
+.nft-img {
+   border: 2px solid orange;
+   margin: 0 10px;
+
+   max-width: 410px;
+   border-radius: 20px;
+   transition: transform 0.9s ease-in-out;
+   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.9);
+}
+
+.nft-img:hover {
+   transform: scale(1.12);
+   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.8);
+   border-color: red;
+}
+.no-contest-msg {
+   color: white;
+}

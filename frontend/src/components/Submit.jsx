@@ -4,8 +4,9 @@ import React from "react";
 import "./styles/Submit.css";
 import { submit } from "./SmartContract.jsx";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
-function Submit({ contract }) {
+function Submit() {
    const [submitSuccessMsg, setSubmitSuccessMsg] = useState("");
    const [submitted, setSubmitted] = useState(false);
    const [submitCount, setSubmitCount] = useState(0);
@@ -34,12 +35,14 @@ function Submit({ contract }) {
    return (
       <div className="submit-container">
          {submitCount === 3 ? (
-            <div
-               className="voting-started-msg"
-               style={{ color: "white", fontSize: "large" }}
-            >
-               Voting has started
-            </div>
+            <>
+               <div className="voting-started-msg">Voting has started</div>
+               <Link to="/votes">
+                  <button className="vote-pg-btn">
+                     Check out the voting page!
+                  </button>
+               </Link>
+            </>
          ) : (
             <>
                <div className="header">
@@ -63,8 +66,8 @@ function Submit({ contract }) {
                         two
                      </span>
                      ... oh wait. Just one! All I need is your{" "}
-                     <span style={{ color: "cyan" }}>NFT ID</span> and exactly{" "}
-                     <span style={{ color: "cyan" }}>1000 wei</span>!
+                     <span style={{ color: "cyan" }}>NFT Token ID</span> and
+                     exactly <span style={{ color: "cyan" }}>1000 wei</span>!
                   </h1>
                </div>
 

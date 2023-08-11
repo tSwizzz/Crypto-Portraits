@@ -4,10 +4,11 @@ import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
 
 contract PrizePool {
-    address public owner; 
+    address public owner;
     address winner;
     address[] public allParticipants;
 
+    uint[] nftIdArray;
     uint prizePool;
     uint endTime;
 
@@ -30,7 +31,6 @@ contract PrizePool {
         bool submitted; //participants can only submit 1 NFT per contest
     }
     mapping(address => NFT) public participants;
-
 
     mapping(address => bool) voters;
     mapping(address => uint) lockedEther; //voter must lock 3000 wei before allowed to vote; reduces rigging of votes.. right?
@@ -57,6 +57,12 @@ contract PrizePool {
             msg.value == 1000 wei,
             "Please send exactly 1000 wei to be able to submit your NFT"
         );
+
+        //Taken out for testing convenience
+        //require(
+        //!participants[msg.sender].submitted,
+        //"You can only send 1 NFT per contest"
+        //);
         _;
     }
 
@@ -70,10 +76,12 @@ contract PrizePool {
             msg.value == 3000 wei,
             "You must lock exactly 3000 wei to be able to vote"
         );
-        require(
-            !participants[msg.sender].submitted,
-            "Contest participants are not allowed to vote"
-        );
+
+        //Taken out for testing convenience
+        //require(
+        //    !participants[msg.sender].submitted,
+        //    "Contest participants are not allowed to vote"
+        //);
         _;
     }
 
@@ -122,6 +130,7 @@ contract PrizePool {
         //update balances and tracking of participants
         potentialWithdrawBalance[msg.sender] += msg.value;
         allParticipants.push(msg.sender);
+        nftIdArray.push(nftId);
 
         if (allParticipants.length == 3) {
             beginContest = true;
@@ -211,8 +220,8 @@ contract PrizePool {
         return allParticipants;
     }
 
-    function getNFTId(address participantAddr) public view returns (uint) {
-        return participants[participantAddr].nftId;
+    function getNFTIdArray() public view returns (uint[] memory) {
+        return nftIdArray;
     }
 
     function getBeginContestValue() public view returns (bool) {
