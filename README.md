@@ -9,6 +9,7 @@ The user with the most likes/votes on their NFT by the end of the voting period 
 Upon deployment, 3 NFTs will be minted to the first signer address on the Hardhat network (0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266). You can see how the website works by submitting these NFTs yourself.
 
 If you really want to test the website fully, follow the steps below. You can also just view a demo version of it :)
+
 Open terminal:
   1. cd backend
   2. npm install
