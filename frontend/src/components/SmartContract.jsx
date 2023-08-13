@@ -4,7 +4,7 @@ const provider = new ethers.BrowserProvider(window.ethereum);
 let signer;
 
 let prizePoolContract;
-const prizePoolAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+const prizePoolAddress = "0x5FC8d32690cc91D4c39d9d3abcBD16989F875707";
 const prizePoolAbi = [
    "constructor() nonpayable",
    "function allParticipants(uint256) view returns (address)",
@@ -25,7 +25,7 @@ const prizePoolAbi = [
 ];
 
 let nftContract;
-const nftAddress = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
+const nftAddress = "0x0165878A594ca255338adfa4d48449f69242Eb8F";
 const nftAbi = [
    "constructor() nonpayable",
    "event Approval(address indexed owner, address indexed approved, uint256 indexed tokenId)",
@@ -104,6 +104,19 @@ export async function displayNFTs() {
       nftArray.push(link);
    }
    return nftArray;
+}
+
+export async function voteNFT() {
+   await getAccess();
+   const amount = document.getElementById("locked-ether-input").value;
+
+   await prizePoolContract.vote({ value: amount }).catch((error) => {
+      if (error.data.message) {
+         alert(error.data.message);
+      } else {
+         alert(error);
+      }
+   });
 }
 
 function getUrl(ipfs) {

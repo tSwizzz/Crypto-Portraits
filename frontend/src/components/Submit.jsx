@@ -65,7 +65,8 @@ function Submit() {
                      >
                         two
                      </span>
-                     ... oh wait. Just one! All I need is your{" "}
+                     ... oh wait. Just <span className="one">one</span>! All I
+                     need is your{" "}
                      <span style={{ color: "cyan" }}>NFT Token ID</span> and
                      exactly <span style={{ color: "cyan" }}>1000 wei</span>!
                   </h1>

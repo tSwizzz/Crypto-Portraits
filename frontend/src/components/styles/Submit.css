@@ -65,3 +65,17 @@ h2 {
    text-align: center;
    margin-top: 20px;
 }
+.one {
+   background-image: linear-gradient(
+      to right,
+      #ff0000,
+      #ff9900,
+      #33cc33,
+      #3399ff,
+      #cc33ff
+   );
+   background-clip: text;
+   -webkit-background-clip: text;
+   color: transparent;
+   font-style: italic;
+}

@@ -24,24 +24,71 @@
    justify-content: center;
    margin-bottom: 90px;
    font-size: 70px;
-   color: #111;
+   color: white;
    font-weight: bolder;
 }
 .nft-img {
    border: 2px solid orange;
    margin: 0 10px;
-
-   max-width: 410px;
+   cursor: pointer;
+   max-width: 390px;
    border-radius: 20px;
    transition: transform 0.9s ease-in-out;
    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.9);
 }
 
 .nft-img:hover {
-   transform: scale(1.12);
+   transform: scale(1.07);
    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.8);
-   border-color: red;
+   border-color: green;
 }
 .no-contest-msg {
+   color: white;
+}
+
+.img-container {
+   box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.4);
+   display: grid;
+   background-color: #111;
+   grid-template-columns: repeat(3, 1fr);
+   gap: 22px;
+   border-radius: 22px;
+   padding: 22px;
+}
+
+.lock-ether-container {
+   text-align: center;
+   margin-top: 20px;
+}
+
+.input-btn {
+   background-color: #098be1;
+   color: white;
+   cursor: pointer;
+   border: none;
+   display: block;
+   margin: auto;
+   transition: background-color 0.3s;
+   border-radius: 7px;
+   padding: 11px 22px;
+}
+.lock-ether-container input[type="number"] {
+   padding: 10px;
+   border: 2px solid #3498db;
+   border-radius: 5px;
+   font-size: 16px;
+   width: 200px;
+   outline: none;
+   transition: border-color 0.3s ease-in-out;
+}
+
+.input-btn:hover {
+   background-color: #2980b9;
+}
+
+.voted-msg {
+   display: flex;
+   justify-content: center;
+   font-size: larger;
    color: white;
 }
