@@ -58,7 +58,7 @@ contract PrizePool {
             "Please send exactly 1000 wei to be able to submit your NFT"
         );
 
-        //Taken out for testing convenience
+        //Taken out for testing convenience / showcasing website
         //require(
         //!participants[msg.sender].submitted,
         //"You can only send 1 NFT per contest"
@@ -68,10 +68,12 @@ contract PrizePool {
 
     modifier canVote() {
         require(!contestEnded, "Contest has ended. No more votes are allowed");
-        require(
-            !voters[msg.sender],
-            "You have already voted for a participant's NFT"
-        );
+
+        //Taken out for testing convenience / showcasing website
+        //require(
+        //    !voters[msg.sender],
+        //    "You have already voted for a participant's NFT"
+        //);
         require(
             msg.value == 3000 wei,
             "You must lock exactly 3000 wei to be able to vote"
@@ -141,6 +143,7 @@ contract PrizePool {
     function vote() external payable canVote {
         voters[msg.sender] = true;
         lockedEther[msg.sender] += msg.value;
+        //update numOfVotes in struct next!!
     }
 
     //only the voters have funds in these
