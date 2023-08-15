@@ -79,7 +79,7 @@ contract PrizePool {
             "You must lock exactly 3000 wei to be able to vote"
         );
 
-        //Taken out for testing convenience
+        //Taken out for testing convenience / showcasing website
         //require(
         //    !participants[msg.sender].submitted,
         //    "Contest participants are not allowed to vote"
@@ -132,6 +132,7 @@ contract PrizePool {
         //update balances and tracking of participants
         potentialWithdrawBalance[msg.sender] += msg.value;
         allParticipants.push(msg.sender);
+        
         nftIdArray.push(nftId);
 
         if (allParticipants.length == 3) {

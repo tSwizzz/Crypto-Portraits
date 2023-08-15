@@ -92,3 +92,10 @@
    font-size: larger;
    color: white;
 }
+
+.nft-img-id {
+   display: flex;
+   justify-content: center;
+   color: white;
+   font-size: 30px;
+}

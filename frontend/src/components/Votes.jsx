@@ -64,7 +64,8 @@ function Votes({ contract }) {
 
    return (
       <div className="votes-container">
-         {/* checks to see if 3 nfts have been sent to contract. if not, then the 'demo' page will show*/}
+         {/* checks to see if 3 nfts have been sent to contract for contest to start. 
+         if not, then the 'demo' page will show*/}
          {contestStatus ? (
             <div>
                <div className="nft-container">

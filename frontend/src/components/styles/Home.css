@@ -46,7 +46,7 @@
 }
 
 .nft-pic img {
-   max-width: 75%;
+   max-width: 80%;
    border: 4px solid #ff9800;
    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.8);
 }
@@ -71,4 +71,103 @@
    border-radius: 30px;
    cursor: pointer;
    margin-top: 30px;
+}
+
+.divider {
+   margin-left: -500px;
+   margin-right: -500px;
+   margin-top: 20px;
+   height: 2px;
+   border-bottom: 2px solid;
+   border-image: linear-gradient(
+      to right,
+      #ff0000,
+      #ff9900,
+      #33cc33,
+      #3399ff,
+      #cc33ff
+   );
+   border-image-slice: 1;
+}
+
+.info-container {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   margin-top: 30px;
+   padding: 20px;
+   background-color: #222;
+}
+
+.info-container img {
+   margin-left: -150px;
+   max-width: 120%;
+   height: auto;
+   border-radius: 10px;
+}
+
+.info-text {
+   padding: 25px;
+   background-color: #222;
+   color: white;
+   font-size: 38px;
+   margin-left: 200px;
+}
+
+.info-title-text {
+   background-image: linear-gradient(
+      to right,
+      #ff0000,
+      #ff9900,
+      #33cc33,
+      #3399ff,
+      #cc33ff
+   );
+   background-clip: text;
+   -webkit-background-clip: text;
+   color: transparent;
+}
+
+.big-bucks-text {
+   color: #85bb65;
+   font-size: 40px;
+}
+
+.useless-text {
+   color: #5c4033;
+}
+
+.ether-tokens-text {
+   color: rgb(0, 255, 0);
+}
+
+/* 3rd section */
+
+/* footer */
+.footer-container {
+   background-color: #222;
+   color: #fff;
+   padding: 10px 0;
+   margin-top: 20px;
+}
+
+.footer-container img {
+   width: 30px;
+   height: 30px;
+   border-radius: 20px;
+}
+
+.footer-container .github-logo {
+   width: 30px;
+   height: 30px;
+   border-radius: 20px;
+   margin-right: 10px;
+}
+
+.github-link {
+   text-decoration: none;
+   color: #fff;
+   display: flex;
+   align-items: center;
+   justify-content: center;
 }
