@@ -6,8 +6,33 @@ import baycImage from "./images/bayc.jpg";
 import { Link } from "react-router-dom";
 import githubLogo from "./images/github-logo.png";
 import degodImage from "./images/degod.jpg";
+import { useState, useEffect } from "react";
 
 function Home() {
+   const [infoContainerStyle, setInfoContainerStyle] = useState(false);
+
+   useEffect(() => {
+      const infoScroll = () => {
+         const windowHeight = window.innerHeight;
+
+         const infoContainer = document.querySelector(".info-container");
+         const infoContainerTop = infoContainer.getBoundingClientRect().top;
+
+         if (infoContainerTop < windowHeight * 0.9) {
+            setInfoContainerStyle(true);
+         } else {
+            setInfoContainerStyle(false);
+         }
+      };
+
+      window.addEventListener("scroll", infoScroll);
+      infoScroll();
+
+      return () => {
+         window.removeEventListener("scroll", infoScroll);
+      };
+   }, []);
+
    return (
       <>
          <div className="home-container">
@@ -21,17 +46,39 @@ function Home() {
             </p>
             <div className="nft-pic">
                <img src={baycImage} />
+               <br />
+               <a
+                  href="https://opensea.io/collection/boredapeyachtclub"
+                  className="baycLink"
+                  target="_blank"
+               >
+                  Collection: Bored Ape Yacht Club
+               </a>
             </div>
             <Link to="./submit-nft">
                <button className="submit-btn">Submit Your NFT Here</button>
             </Link>
          </div>
 
+         <br />
+         <br />
          <div className="divider"></div>
+         <br />
+         <br />
 
-         <div className="info-container">
+         <div
+            className={`info-container ${infoContainerStyle ? "animate" : ""}`}
+         >
+            {" "}
             <div className="info-nft-image">
                <img src={degodImage} />
+               <a
+                  href="https://opensea.io/collection/degods"
+                  className="degodLink"
+                  target="_blank"
+               >
+                  Collection: DeGods
+               </a>
             </div>
             <div className="info-text-container">
                <p className="info-text">
@@ -49,16 +96,17 @@ function Home() {
             </div>
          </div>
 
+         <br />
+         <br />
+
          <div className="divider"></div>
 
-         <div className="info2-container">
-            <div className="info2-text-container">
-               <p className="info2-text"></p>
-            </div>
-            <div className="info2-nft-image"></div>
-         </div>
          <footer className="footer-container">
-            <a href="https://github.com/tSwizzz" className="github-link">
+            <a
+               href="https://github.com/tSwizzz"
+               className="github-link"
+               target="_blank"
+            >
                <img
                   src={githubLogo}
                   alt="GitHub Logo"
