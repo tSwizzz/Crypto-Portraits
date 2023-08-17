@@ -27,8 +27,6 @@
 }
 
 .divider1 {
-   margin-left: -500px;
-   margin-right: -500px;
    margin-top: 20px;
    height: 2px;
    background: linear-gradient(
@@ -42,8 +40,6 @@
    animation: fadeInOut 1.8s infinite;
 }
 .divider2 {
-   margin-left: -500px;
-   margin-right: -500px;
    margin-top: 20px;
    height: 2px;
    background: linear-gradient(
@@ -57,8 +53,6 @@
    animation: fadeInOut 2.4s infinite;
 }
 .divider3 {
-   margin-left: -500px;
-   margin-right: -500px;
    margin-top: 20px;
    height: 2px;
    background: linear-gradient(
