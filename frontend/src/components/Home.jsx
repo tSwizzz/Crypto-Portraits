@@ -10,6 +10,7 @@ import { useState, useEffect } from "react";
 
 function Home() {
    const [infoContainerStyle, setInfoContainerStyle] = useState(false);
+   const [info2ContainerStyle, setInfo2ContainerStyle] = useState(false);
 
    useEffect(() => {
       const infoScroll = () => {
@@ -18,10 +19,19 @@ function Home() {
          const infoContainer = document.querySelector(".info-container");
          const infoContainerTop = infoContainer.getBoundingClientRect().top;
 
+         const info2Container = document.querySelector(".info2-container");
+         const info2ContainerTop = info2Container.getBoundingClientRect().top;
+
          if (infoContainerTop < windowHeight * 0.9) {
             setInfoContainerStyle(true);
          } else {
             setInfoContainerStyle(false);
+         }
+
+         if (info2ContainerTop < windowHeight * 0.8) {
+            setInfo2ContainerStyle(true);
+         } else {
+            setInfo2ContainerStyle(false);
          }
       };
 
@@ -56,13 +66,13 @@ function Home() {
                </a>
             </div>
             <Link to="./submit-nft">
-               <button className="submit-btn">Submit Your NFT Here</button>
+               <button className="submit-btn">Submit Your NFT</button>
             </Link>
          </div>
 
          <br />
          <br />
-         <div className="divider"></div>
+         <div className="divider1"></div>
          <br />
          <br />
 
@@ -91,7 +101,7 @@ function Home() {
                   into some{" "}
                   <span className="ether-tokens-text">juicy ether tokens</span>.
                   We invite artists from all corners of the globe to share their
-                  unique creations and compete for a chance to win some cash!
+                  unique art and compete for a chance to win some cash!
                </p>
             </div>
          </div>
@@ -99,7 +109,30 @@ function Home() {
          <br />
          <br />
 
-         <div className="divider"></div>
+         <div className="divider2"></div>
+
+         <div
+            className={`info2-container ${
+               info2ContainerStyle ? "animate" : ""
+            }`}
+         >
+            <div className="left-container">
+               <h1 className="header1">
+                  What The <span className="f-word">F#$%</span> Are You Waiting
+                  For
+               </h1>
+               <h2 className="header2">Your Gambling Awaits</h2>
+            </div>
+            <div className="right-container">
+               <Link to="./submit-nft">
+                  <button className="submit-button">
+                     Submit Your NFT Art Now
+                  </button>
+               </Link>
+            </div>
+         </div>
+
+         <div className="divider3"></div>
 
          <footer className="footer-container">
             <a

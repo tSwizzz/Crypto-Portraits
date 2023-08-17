@@ -23,18 +23,18 @@
    display: flex;
    justify-content: center;
    margin-bottom: 90px;
+   margin-top: -60px;
    font-size: 70px;
    color: white;
    font-weight: bolder;
 }
 .nft-img {
-   border: 2px solid orange;
    margin: 0 10px;
    cursor: pointer;
    max-width: 390px;
-   border-radius: 20px;
+   border-radius: 10px;
    transition: transform 0.9s ease-in-out;
-   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.9);
+   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
 }
 
 .nft-img:hover {
@@ -47,9 +47,8 @@
 }
 
 .img-container {
-   box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.4);
    display: grid;
-   background-color: #111;
+   background-color: #222;
    grid-template-columns: repeat(3, 1fr);
    gap: 22px;
    border-radius: 22px;

@@ -11,7 +11,7 @@ function Submit() {
    const [submitted, setSubmitted] = useState(false);
    const [submitCount, setSubmitCount] = useState(0);
 
-   const newSubmitCount = 0; //fix later
+   const newSubmitCount = 3; //fix later
    localStorage.setItem("submitCount", newSubmitCount);
 
    useEffect(() => {
@@ -38,9 +38,7 @@ function Submit() {
             <>
                <div className="voting-started-msg">Voting has started</div>
                <Link to="/votes">
-                  <button className="vote-pg-btn">
-                     Check out the voting page!
-                  </button>
+                  <button className="vote-pg-btn">Go to Voting</button>
                </Link>
             </>
          ) : (
