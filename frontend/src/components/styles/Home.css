@@ -132,6 +132,7 @@
    margin-top: 30px;
 }
 
+/* 2nd section */
 .info-container {
    display: flex;
    align-items: center;
@@ -156,7 +157,7 @@
    font-size: 12px;
    text-decoration: none;
    font-family: "Montserrat";
-   margin-left: 70px;
+   margin-left: 120px;
 }
 
 .info-text {
