@@ -146,8 +146,8 @@
 }
 
 .info-container img {
-   margin-left: -100px;
-   max-width: 127%;
+   margin-left: -30px;
+   max-width: 120%;
    height: auto;
    border-radius: 10px;
 }
@@ -157,7 +157,7 @@
    font-size: 12px;
    text-decoration: none;
    font-family: "Montserrat";
-   margin-left: 120px;
+   margin-left: 160px;
 }
 
 .info-text {
@@ -165,7 +165,7 @@
    background-color: #222;
    color: white;
    font-size: 34px;
-   margin-left: 260px;
+   margin-left: 247px;
    font-family: "Montserrat";
 }
 
@@ -186,19 +186,22 @@
    background-clip: text;
    -webkit-background-clip: text;
    color: transparent;
+   font-style: italic;
 }
 
 .big-bucks-text {
    color: #85bb65;
-   font-size: 40px;
 }
 
-.useless-text {
-   color: #5c4033;
+.nft-art-text {
+   color: rgb(251, 3, 201);
 }
 
 .ether-tokens-text {
    color: rgb(0, 255, 0);
+}
+.globe-text {
+   color: cyan;
 }
 
 /* 3rd section */

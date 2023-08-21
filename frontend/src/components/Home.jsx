@@ -92,15 +92,15 @@ function Home() {
             </div>
             <div className="info-text-container">
                <p className="info-text">
-                  Are you a passionate artist wanting to score some{" "}
-                  <span className="big-bucks-text">Big Bucks</span>? Look no
-                  further! At{" "}
-                  <span className="info-title-text">NFT Prize Pool</span>, we're
-                  on a mission to convert that{" "}
-                  <span className="useless-text">useless fiat currency</span>{" "}
-                  into some{" "}
-                  <span className="ether-tokens-text">juicy ether tokens</span>.
-                  We invite artists from all corners of the globe to share their
+                  Are you a passionate artist wanting to share your art and
+                  score some <span className="big-bucks-text">Big Bucks</span>?
+                  Look no further! At{" "}
+                  <span className="info-title-text">NFT Prize Pool</span>,
+                  submit your best <span className="nft-art-text">NFT art</span>{" "}
+                  pieces for a chance to win some{" "}
+                  <span className="ether-tokens-text">ether</span>! We invite
+                  artists from all corners of the{" "}
+                  <span className="globe-text">globe</span> to share their
                   unique art and compete for a chance to win some cash!
                </p>
             </div>
@@ -117,11 +117,8 @@ function Home() {
             }`}
          >
             <div className="left-container">
-               <h1 className="header1">
-                  What Are You Waiting
-                  For
-               </h1>
-               <h2 className="header2">Your Gambling Awaits</h2>
+               <h1 className="header1">What Are You Waiting For</h1>
+               <h2 className="header2">You Just Might Win</h2>
             </div>
             <div className="right-container">
                <Link to="./submit-nft">
