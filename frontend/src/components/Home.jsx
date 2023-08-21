@@ -98,7 +98,7 @@ function Home() {
                   <span className="info-title-text">NFT Prize Pool</span>,
                   submit your best <span className="nft-art-text">NFT art</span>{" "}
                   pieces for a chance to win some{" "}
-                  <span className="ether-tokens-text">ether</span>! We invite
+                  <span className="ether-tokens-text">ETH</span>! We invite
                   artists from all corners of the{" "}
                   <span className="globe-text">globe</span> to share their
                   unique art and compete for a chance to win some cash!
