@@ -25,6 +25,35 @@
       color: violet;
    }
 }
+@keyframes shake {
+   0%,
+   100% {
+      transform: translateX(0);
+   }
+   10%,
+   30%,
+   50%,
+   70%,
+   90% {
+      transform: translateX(-4px);
+   }
+   20%,
+   40%,
+   60%,
+   80% {
+      transform: translateX(4px);
+   }
+}
+
+@keyframes big-small {
+   0%,
+   100% {
+      transform: scale(1);
+   }
+   50% {
+      transform: scale(1.05);
+   }
+}
 
 .divider1 {
    margin-top: 20px;
@@ -50,7 +79,7 @@
       #3399ff,
       #cc33ff
    );
-   animation: fadeInOut 2.4s infinite;
+   animation: fadeInOut 2.8s infinite;
 }
 .divider3 {
    margin-top: 20px;
@@ -63,7 +92,7 @@
       #3399ff,
       #cc33ff
    );
-   animation: fadeInOut 3s infinite;
+   animation: fadeInOut 3.2s infinite;
 }
 
 @keyframes fadeInOut {
@@ -157,7 +186,7 @@
    font-size: 12px;
    text-decoration: none;
    font-family: "Montserrat";
-   margin-left: 160px;
+   margin-left: 190px;
 }
 
 .info-text {
@@ -224,6 +253,7 @@
 .left-container {
    flex: 1;
    margin-right: 60px;
+   animation: big-small 2s ease infinite;
 }
 
 .header1 {
@@ -265,6 +295,7 @@
 
 .submit-button:hover {
    background-color: darkslategray;
+   animation: shake 0.5s;
 }
 
 /* footer */
