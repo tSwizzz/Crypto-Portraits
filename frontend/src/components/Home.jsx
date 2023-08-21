@@ -48,7 +48,7 @@ function Home() {
          <div className="home-container">
             <h1 className="home-title">
                Decentralized Voting? NFTs? Wannabe gambling website? Welcome to
-               NFT Prize Pool!
+               Crypto Portraits!
             </h1>
             <p className="home-body">
                Submit your NFT art against 2 other competitors and stand a
@@ -93,9 +93,9 @@ function Home() {
             <div className="info-text-container">
                <p className="info-text">
                   Are you a passionate artist wanting to share your art and
-                  score some <span className="big-bucks-text">Big Bucks</span>?
-                  Look no further! At{" "}
-                  <span className="info-title-text">NFT Prize Pool</span>,
+                  score some <span className="crypto-text">crypto</span>? Look
+                  no further! At{" "}
+                  <span className="info-title-text">Crypto Portraits</span>,
                   submit your best <span className="nft-art-text">NFT art</span>{" "}
                   pieces for a chance to win some{" "}
                   <span className="ether-tokens-text">ETH</span>! We invite

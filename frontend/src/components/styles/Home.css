@@ -176,7 +176,7 @@
 
 .info-container img {
    margin-left: -30px;
-   max-width: 120%;
+   max-width: 110%;
    height: auto;
    border-radius: 10px;
 }
@@ -186,7 +186,7 @@
    font-size: 12px;
    text-decoration: none;
    font-family: "Montserrat";
-   margin-left: 190px;
+   margin-left: 170px;
 }
 
 .info-text {
@@ -218,8 +218,8 @@
    font-style: italic;
 }
 
-.big-bucks-text {
-   color: #85bb65;
+.crypto-text {
+   color: #119ad5;
 }
 
 .nft-art-text {

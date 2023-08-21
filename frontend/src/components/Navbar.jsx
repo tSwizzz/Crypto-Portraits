@@ -18,7 +18,7 @@ function NavbarTop({ connect, connected }) {
          >
             <Container fluid>
                <Navbar.Brand href="/" className="navbar-brand ">
-                  <span>NFT Prize Pool</span>
+                  <span>Crypto Portraits</span>
                </Navbar.Brand>
                <Navbar.Toggle />
                <Navbar.Collapse>
