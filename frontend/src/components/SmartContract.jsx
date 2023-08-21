@@ -4,7 +4,7 @@ const provider = new ethers.BrowserProvider(window.ethereum);
 let signer;
 
 let prizePoolContract;
-const prizePoolAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+const prizePoolAddress = "0x8f86403A4DE0BB5791fa46B8e795C547942fE4Cf";
 const prizePoolAbi = [
    "constructor() nonpayable",
    "function allParticipants(uint256) view returns (address)",
@@ -17,7 +17,7 @@ const prizePoolAbi = [
    "function owner() view returns (address)",
    "function participants(address) view returns (address nft, address owner, uint256 nftId, uint256 numOfVotes, bool submitted)",
    "function submitNFT(address nft, uint256 nftId) payable",
-   "function vote() payable",
+   "function vote(uint256 id) payable",
    "function withdrawAllFunds()",
    "function withdrawLockedEther()",
    "function withdrawNFT(uint256 id)",
@@ -25,7 +25,7 @@ const prizePoolAbi = [
 ];
 
 let nftContract;
-const nftAddress = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
+const nftAddress = "0x9d4454B023096f34B160D6B654540c56A1F81688";
 const nftAbi = [
    "constructor() nonpayable",
    "event Approval(address indexed owner, address indexed approved, uint256 indexed tokenId)",
@@ -109,8 +109,9 @@ export async function displayNFTs() {
 export async function voteNFT() {
    await getAccess();
    const amount = document.getElementById("locked-ether-input").value;
+   const nftId = document.getElementById("nft-id-num").value;
 
-   await prizePoolContract.vote({ value: amount }).catch((error) => {
+   await prizePoolContract.vote(nftId, { value: amount }).catch((error) => {
       if (error.data.message) {
          alert(error.data.message);
       } else {

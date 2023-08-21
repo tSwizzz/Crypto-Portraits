@@ -1,6 +1,6 @@
 {
   "contract": {
-    "address": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+    "address": "0x8f86403A4DE0BB5791fa46B8e795C547942fE4Cf",
     "signerAddress": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
     "abi": [
       "constructor() nonpayable",
@@ -14,7 +14,7 @@
       "function owner() view returns (address)",
       "function participants(address) view returns (address nft, address owner, uint256 nftId, uint256 numOfVotes, bool submitted)",
       "function submitNFT(address nft, uint256 nftId) payable",
-      "function vote() payable",
+      "function vote(uint256 id) payable",
       "function withdrawAllFunds()",
       "function withdrawLockedEther()",
       "function withdrawNFT(uint256 id)",

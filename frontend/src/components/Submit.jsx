@@ -11,7 +11,7 @@ function Submit() {
    const [submitted, setSubmitted] = useState(false);
    const [submitCount, setSubmitCount] = useState(0);
 
-   const newSubmitCount = 3; //fix later
+   const newSubmitCount = 0; //fix later
    localStorage.setItem("submitCount", newSubmitCount);
 
    useEffect(() => {

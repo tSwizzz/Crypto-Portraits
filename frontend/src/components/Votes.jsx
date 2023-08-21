@@ -17,6 +17,8 @@ function Votes({ contract }) {
 
    const [contestStatus, setContestStatus] = useState(false);
    const [lockedEtherAmount, setLockedEtherAmount] = useState("");
+   const [nftIdNum, setNftIdNum] = useState("");
+
    const [voted, setVoted] = useState(false);
 
    useEffect(() => {
@@ -62,6 +64,10 @@ function Votes({ contract }) {
       setLockedEtherAmount(event.target.value);
    };
 
+   const handleNftIdNum = (event) => {
+      setNftIdNum(event.target.value);
+   };
+
    return (
       <div className="votes-container">
          {/* checks to see if 3 nfts have been sent to contract for contest to start. 
@@ -73,7 +79,7 @@ function Votes({ contract }) {
                      Vote Your&nbsp;
                      <span className="fav-word">Favorite...</span>
                   </h2>
-                  <a className="img-container" href="#" onClick={handleVote}>
+                  <a className="img-container" href="#">
                      <img className="nft-img" src={image1} alt="NFT 1" />
                      <img className="nft-img" src={image2} alt="NFT 2" />
                      <img className="nft-img" src={image3} alt="NFT 3" />
@@ -87,6 +93,18 @@ function Votes({ contract }) {
                      value={lockedEtherAmount}
                      onChange={handleLockedEtherAmount}
                   />
+                  <br />
+                  <input
+                     type="number"
+                     id="nft-id-num"
+                     placeholder="Enter NFT ID"
+                     value={nftIdNum}
+                     onChange={handleNftIdNum}
+                  />
+                  <br />
+                  <button className="vote-btn" onClick={handleVote}>
+                     Vote
+                  </button>
                </div>
                {voted && (
                   <>

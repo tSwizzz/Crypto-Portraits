@@ -118,7 +118,7 @@ function Home() {
          >
             <div className="left-container">
                <h1 className="header1">
-                  What The <span className="f-word">F#$%</span> Are You Waiting
+                  What Are You Waiting
                   For
                </h1>
                <h2 className="header2">Your Gambling Awaits</h2>

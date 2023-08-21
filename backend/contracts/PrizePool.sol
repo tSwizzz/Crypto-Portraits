@@ -66,9 +66,12 @@ contract PrizePool {
         _;
     }
 
-    modifier canVote() {
+    modifier canVote(uint id) {
         require(!contestEnded, "Contest has ended. No more votes are allowed");
-
+        require(
+            participants[allParticipants[id - 1]].nftId == id,
+            "You must vote for a valid ID option"
+        );
         //Taken out for testing convenience / showcasing website
         //require(
         //    !voters[msg.sender],
@@ -132,7 +135,7 @@ contract PrizePool {
         //update balances and tracking of participants
         potentialWithdrawBalance[msg.sender] += msg.value;
         allParticipants.push(msg.sender);
-        
+
         nftIdArray.push(nftId);
 
         if (allParticipants.length == 3) {
@@ -141,10 +144,11 @@ contract PrizePool {
         }
     }
 
-    function vote() external payable canVote {
+    function vote(uint id) external payable canVote(id) {
         voters[msg.sender] = true;
         lockedEther[msg.sender] += msg.value;
-        //update numOfVotes in struct next!!
+
+        participants[allParticipants[id - 1]].numOfVotes += 1;
     }
 
     //only the voters have funds in these
