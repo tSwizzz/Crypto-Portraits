@@ -47,8 +47,7 @@ function Home() {
       <>
          <div className="home-container">
             <h1 className="home-title">
-               Decentralized Voting? NFTs? Wannabe gambling website? Welcome to
-               Crypto Portraits!
+               Decentralized Voting? NFTs? Welcome to Crypto Portraits!
             </h1>
             <p className="home-body">
                Submit your NFT art against 2 other competitors and stand a

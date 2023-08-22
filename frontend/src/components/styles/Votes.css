@@ -116,3 +116,18 @@
 .vote-btn:hover {
    background-color: #2980b9;
 }
+
+.end-contest-btn {
+   padding: 10px 30px;
+   margin-top: 60px;
+   font-size: 20px;
+   font-weight: bold;
+   cursor: pointer;
+   transition: background-color 0.3s ease, color 0.3s ease;
+   background-color: red;
+   color: white;
+   border: none;
+   border-radius: 12px;
+   box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.9);
+   font-family: "Montserrat";
+}

@@ -1,6 +1,6 @@
 {
   "contract": {
-    "address": "0x8f86403A4DE0BB5791fa46B8e795C547942fE4Cf",
+    "address": "0xdbC43Ba45381e02825b14322cDdd15eC4B3164E6",
     "signerAddress": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
     "abi": [
       "constructor() nonpayable",

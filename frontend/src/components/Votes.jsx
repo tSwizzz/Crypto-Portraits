@@ -6,7 +6,7 @@ import pepe3 from "./images/pepe3.jpg";
 
 import React, { useEffect, useState } from "react";
 import Submit from "./Submit.jsx";
-import { contestState, voteNFT } from "./SmartContract.jsx";
+import { contestState, voteNFT, endContest } from "./SmartContract.jsx";
 import { displayNFTs } from "./SmartContract.jsx";
 //import { lock } from "ethers";
 
@@ -20,6 +20,7 @@ function Votes({ contract }) {
    const [nftIdNum, setNftIdNum] = useState("");
 
    const [voted, setVoted] = useState(false);
+   const [endContestValue, setEndContestValue] = useState(false);
 
    useEffect(() => {
       fetchContestValue();
@@ -60,6 +61,12 @@ function Votes({ contract }) {
       } catch {}
    };
 
+   const handleEndContest = async () => {
+      await endContest();
+      setEndContestValue(true);
+      setContestStatus(false);
+   };
+
    const handleLockedEtherAmount = (event) => {
       setLockedEtherAmount(event.target.value);
    };
@@ -70,9 +77,7 @@ function Votes({ contract }) {
 
    return (
       <div className="votes-container">
-         {/* checks to see if 3 nfts have been sent to contract for contest to start. 
-         if not, then the 'demo' page will show*/}
-         {contestStatus ? (
+         {contestStatus && !endContestValue ? (
             <div>
                <div className="nft-container">
                   <h2 className="votes-header">
@@ -105,6 +110,13 @@ function Votes({ contract }) {
                   <button className="vote-btn" onClick={handleVote}>
                      Vote
                   </button>
+                  <br />
+                  <button
+                     className="end-contest-btn"
+                     onClick={handleEndContest}
+                  >
+                     End Contest
+                  </button>
                </div>
                {voted && (
                   <>
@@ -114,17 +126,17 @@ function Votes({ contract }) {
                   </>
                )}
             </div>
+         ) : endContestValue ? (
+            <div style={{ color: "white" }}>hi</div>
          ) : (
-            <>
-               <div className="nft-container">
-                  <h2 className="votes-header">DEMO</h2>
-                  <div className="img-container">
-                     <img className="nft-img" src={pepe1} alt="NFT 1" />
-                     <img className="nft-img" src={pepe2} alt="NFT 2" />
-                     <img className="nft-img" src={pepe3} alt="NFT 3" />
-                  </div>
+            <div className="nft-container">
+               <h2 className="votes-header">DEMO</h2>
+               <div className="img-container">
+                  <img className="nft-img" src={pepe1} alt="NFT 1" />
+                  <img className="nft-img" src={pepe2} alt="NFT 2" />
+                  <img className="nft-img" src={pepe3} alt="NFT 3" />
                </div>
-            </>
+            </div>
          )}
       </div>
    );
