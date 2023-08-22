@@ -68,10 +68,7 @@ contract PrizePool {
 
     modifier canVote(uint id) {
         require(!contestEnded, "Contest has ended. No more votes are allowed");
-        require(
-            participants[allParticipants[id - 1]].nftId == id,
-            "You must vote for a valid ID option"
-        );
+
         //Taken out for testing convenience / showcasing website
         //require(
         //    !voters[msg.sender],
@@ -159,6 +156,7 @@ contract PrizePool {
         require(sent, "Withdraw failed, try again please");
     }
 
+    //if there is no tie,  winner collects prize pool amount
     function withdrawPrizePool() external {
         require(msg.sender == winner, "You are not the winner");
 
@@ -201,6 +199,8 @@ contract PrizePool {
     //this basically only exists for the purpose of testing so I don't have to
     //wait for the contest to end every time it starts lol
     function end() external onlyOwner {
+        contestEnded = true;
+        
         //lets check if there is a winner or if there is a tie
         uint highestVotes = participants[allParticipants[0]].numOfVotes;
 
