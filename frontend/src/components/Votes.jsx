@@ -6,7 +6,12 @@ import pepe3 from "./images/pepe3.jpg";
 
 import React, { useEffect, useState } from "react";
 import Submit from "./Submit.jsx";
-import { contestState, voteNFT, endContest } from "./SmartContract.jsx";
+import {
+   contestState,
+   voteNFT,
+   endContest,
+   prizePoolValue,
+} from "./SmartContract.jsx";
 import { displayNFTs } from "./SmartContract.jsx";
 //import { lock } from "ethers";
 
@@ -21,6 +26,7 @@ function Votes({ contract }) {
 
    const [voted, setVoted] = useState(false);
    const [endContestValue, setEndContestValue] = useState(false);
+   const [prizePoolVal, setPrizePoolVal] = useState("");
 
    useEffect(() => {
       fetchContestValue();
@@ -65,6 +71,13 @@ function Votes({ contract }) {
       await endContest();
       setEndContestValue(true);
       setContestStatus(false);
+      handlePrizePoolVal();
+   };
+
+   const handlePrizePoolVal = async () => {
+      let val = await prizePoolValue();
+      val = val.toString();
+      setPrizePoolVal(val);
    };
 
    const handleLockedEtherAmount = (event) => {
@@ -139,17 +152,28 @@ function Votes({ contract }) {
                   </>
                )}
             </div>
-         ) : endContestValue ? (
+         ) : endContestValue && prizePoolVal == 0 ? (
             <div className="results-container">hi</div>
          ) : (
-            <div className="nft-container">
-               <h2 className="votes-header">DEMO</h2>
-               <div className="img-container">
-                  <img className="nft-img" src={pepe1} alt="NFT 1" />
-                  <img className="nft-img" src={pepe2} alt="NFT 2" />
-                  <img className="nft-img" src={pepe3} alt="NFT 3" />
+            <>
+               <div className="nft-container">
+                  <h2 className="votes-header">DEMO</h2>
+                  <div className="img-container">
+                     <div className="img-id-text">
+                        <p className="image-id">ID: 1</p>
+                        <img className="nft-img" src={pepe1} alt="NFT 1" />
+                     </div>
+                     <div className="img-id-text">
+                        <p className="image-id">ID: 2</p>
+                        <img className="nft-img" src={pepe2} alt="NFT 2" />
+                     </div>
+                     <div className="img-id-text">
+                        <p className="image-id">ID: 3</p>
+                        <img className="nft-img" src={pepe3} alt="NFT 3" />
+                     </div>
+                  </div>
                </div>
-            </div>
+            </>
          )}
       </div>
    );

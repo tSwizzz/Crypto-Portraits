@@ -200,7 +200,7 @@ contract PrizePool {
     //wait for the contest to end every time it starts lol
     function end() external onlyOwner {
         contestEnded = true;
-        
+
         //lets check if there is a winner or if there is a tie
         uint highestVotes = participants[allParticipants[0]].numOfVotes;
 
@@ -239,6 +239,7 @@ contract PrizePool {
     function getContestEndedValue() public view returns (bool) {
         return contestEnded;
     }
+    function getPrizePoolValue() public view returns (uint) {
+        return prizePool;
+    }
 }
-
-//function createNFTContest() internal {}

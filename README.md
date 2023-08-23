@@ -1,6 +1,6 @@
 <!-- @format -->
 
-# NFT-Prize-Pool
+# Crypto-Portraits
 
 Description:
 This is a decentralized voting platform where users can submit an NFT that they have created into a timed voting pool with 2 other users.
@@ -29,8 +29,8 @@ Open terminal:
 7. cd frontend
 8. npm install
 9. npm run dev
-10. copy 'Local' link and paste in URL
-11. Go crazy
+10.   copy 'Local' link and paste in URL
+11.   Go crazy
 
 *This project is really just an art contest.  
 *Vote rigging / cheating are edge-cases that are out of my reach. I'm only human.
