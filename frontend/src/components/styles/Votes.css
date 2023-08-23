@@ -38,7 +38,7 @@
 }
 
 .nft-img:hover {
-   transform: scale(1.07);
+   transform: scale(1.04);
    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.8);
    border-color: green;
 }
@@ -47,7 +47,8 @@
 }
 
 .img-container {
-   display: grid;
+   display: flex;
+   justify-content: center;
    background-color: #222;
    grid-template-columns: repeat(3, 1fr);
    gap: 22px;
@@ -55,9 +56,22 @@
    padding: 22px;
 }
 
+.img-id-text {
+   text-align: center;
+   margin: 0 18px;
+}
+
+.image-id {
+   font-size: 14px;
+   color: white;
+   font-weight: bold;
+   margin-bottom: 5px;
+}
+
 .lock-ether-container {
    text-align: center;
    margin-top: 20px;
+   padding: 30px;
 }
 
 .input-btn {
@@ -71,6 +85,7 @@
    border-radius: 7px;
    padding: 11px 22px;
 }
+
 .lock-ether-container input[type="number"] {
    padding: 10px;
    border: 2px solid #3498db;
@@ -117,6 +132,10 @@
    background-color: #2980b9;
 }
 
+.end-contest-container {
+   display: flex;
+   justify-content: center;
+}
 .end-contest-btn {
    padding: 10px 30px;
    margin-top: 60px;
@@ -130,4 +149,14 @@
    border-radius: 12px;
    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.9);
    font-family: "Montserrat";
+}
+
+.end-contest-btn:hover {
+   background-color: rgb(96, 1, 1);
+}
+
+/* results after voting ends */
+
+.results-container {
+   color: white;
 }

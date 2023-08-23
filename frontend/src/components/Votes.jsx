@@ -84,17 +84,26 @@ function Votes({ contract }) {
                      Vote Your&nbsp;
                      <span className="fav-word">Favorite...</span>
                   </h2>
-                  <a className="img-container" href="#">
-                     <img className="nft-img" src={image1} alt="NFT 1" />
-                     <img className="nft-img" src={image2} alt="NFT 2" />
-                     <img className="nft-img" src={image3} alt="NFT 3" />
-                  </a>
+                  <div className="img-container">
+                     <div className="img-id-text">
+                        <p className="image-id">ID: 1</p>
+                        <img className="nft-img" src={pepe1} alt="NFT 1" />
+                     </div>
+                     <div className="img-id-text">
+                        <p className="image-id">ID: 2</p>
+                        <img className="nft-img" src={pepe2} alt="NFT 2" />
+                     </div>
+                     <div className="img-id-text">
+                        <p className="image-id">ID: 3</p>
+                        <img className="nft-img" src={pepe3} alt="NFT 3" />
+                     </div>
+                  </div>
                </div>
                <div className="lock-ether-container">
                   <input
                      type="number"
                      id="locked-ether-input"
-                     placeholder="Enter 3000"
+                     placeholder="3000 wei"
                      value={lockedEtherAmount}
                      onChange={handleLockedEtherAmount}
                   />
@@ -102,7 +111,7 @@ function Votes({ contract }) {
                   <input
                      type="number"
                      id="nft-id-num"
-                     placeholder="Enter NFT ID"
+                     placeholder="NFT ID"
                      value={nftIdNum}
                      onChange={handleNftIdNum}
                   />
@@ -111,6 +120,9 @@ function Votes({ contract }) {
                      Vote
                   </button>
                   <br />
+               </div>
+
+               <div className="end-contest-container">
                   <button
                      className="end-contest-btn"
                      onClick={handleEndContest}
@@ -118,6 +130,7 @@ function Votes({ contract }) {
                      End Contest
                   </button>
                </div>
+
                {voted && (
                   <>
                      <div className="voted-msg">
@@ -127,7 +140,7 @@ function Votes({ contract }) {
                )}
             </div>
          ) : endContestValue ? (
-            <div style={{ color: "white" }}>hi</div>
+            <div className="results-container">hi</div>
          ) : (
             <div className="nft-container">
                <h2 className="votes-header">DEMO</h2>
