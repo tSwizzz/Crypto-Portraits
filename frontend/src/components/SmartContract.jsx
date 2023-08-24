@@ -4,7 +4,7 @@ const provider = new ethers.BrowserProvider(window.ethereum);
 let signer;
 
 let prizePoolContract;
-const prizePoolAddress = "0xCace1b78160AE76398F486c8a18044da0d66d86D";
+const prizePoolAddress = "0x6C2d83262fF84cBaDb3e416D527403135D757892";
 const prizePoolAbi = [
    "constructor() nonpayable",
    "function allParticipants(uint256) view returns (address)",
@@ -14,6 +14,7 @@ const prizePoolAbi = [
    "function getContestEndedValue() view returns (bool)",
    "function getNFTIdArray() view returns (uint256[])",
    "function getPrizePoolValue() view returns (uint256)",
+   "function getWinner() view returns (address)",
    "function onERC721Received(address operator, address from, uint256 tokenId, bytes data) returns (bytes4)",
    "function owner() view returns (address)",
    "function participants(address) view returns (address nft, address owner, uint256 nftId, uint256 numOfVotes, bool submitted)",
@@ -26,7 +27,7 @@ const prizePoolAbi = [
 ];
 
 let nftContract;
-const nftAddress = "0xD5ac451B0c50B9476107823Af206eD814a2e2580";
+const nftAddress = "0xFD6F7A6a5c21A3f503EBaE7a473639974379c351";
 const nftAbi = [
    "constructor() nonpayable",
    "event Approval(address indexed owner, address indexed approved, uint256 indexed tokenId)",
@@ -139,10 +140,10 @@ export async function endContest() {
    await prizePoolContract.end();
 }
 
-export async function prizePoolValue() {
+export async function getWinner() {
    await getAccess();
-   let val = await prizePoolContract.getPrizePoolValue();
-   return val;
+   let winner = await prizePoolContract.getWinner();
+   return winner;
 }
 
 function getUrl(ipfs) {
