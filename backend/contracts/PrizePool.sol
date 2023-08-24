@@ -239,7 +239,12 @@ contract PrizePool {
     function getContestEndedValue() public view returns (bool) {
         return contestEnded;
     }
+
     function getPrizePoolValue() public view returns (uint) {
         return prizePool;
+    }
+
+    function getWinner() public view returns (address) {
+        return winner;
     }
 }
