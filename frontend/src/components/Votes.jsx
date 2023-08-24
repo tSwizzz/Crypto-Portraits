@@ -3,6 +3,7 @@ import "./styles/Votes.css";
 import pepe1 from "./images/pepe1.jpg";
 import pepe2 from "./images/pepe2.jpg";
 import pepe3 from "./images/pepe3.jpg";
+import githubLogo from "./images/github-logo.png";
 
 import React, { useEffect, useState } from "react";
 import {
@@ -35,6 +36,7 @@ function Votes() {
       fetchContestValue();
    }, []);
 
+   //grab the state of the contest (bool)
    const fetchContestValue = async () => {
       try {
          let status = await contestState();
@@ -83,6 +85,7 @@ function Votes() {
       handleWinner();
    };
 
+   //if there is a winner, they may withdraw the prize pool
    const handlePrizePoolWithdraw = async () => {
       try {
          await prizePoolWithdraw();
@@ -91,6 +94,7 @@ function Votes() {
       }
    };
 
+   //contestant may withdraw NFT now that contest is over
    const handleNFTWithdraw = async () => {
       try {
          await nftWithdraw();
@@ -99,6 +103,7 @@ function Votes() {
       }
    };
 
+   //voters can withdraw their locked ether
    const handleLockedEtherWithdraw = async () => {
       try {
          await lockedEtherWithdraw();
@@ -107,6 +112,7 @@ function Votes() {
       }
    };
 
+   //contestants can withdraw the ether they submitted to the contest only if a tie occurred
    const handleWithdrawSubmittedEther = async () => {
       try {
          await withdrawSubmittedEther();
@@ -124,152 +130,168 @@ function Votes() {
    };
 
    return (
-      <div className="votes-container">
-         {contestStatus && !endContestValue ? (
-            <div>
-               <div className="nft-container">
-                  <h2 className="votes-header">
-                     Vote Your&nbsp;
-                     <span className="fav-word">Favorite...</span>
-                  </h2>
-                  <div className="img-container">
-                     <div className="img-id-text">
-                        <p className="image-id">ID: 1</p>
-                        <img className="nft-img" src={pepe1} alt="NFT 1" />
-                     </div>
-                     <div className="img-id-text">
-                        <p className="image-id">ID: 2</p>
-                        <img className="nft-img" src={pepe2} alt="NFT 2" />
-                     </div>
-                     <div className="img-id-text">
-                        <p className="image-id">ID: 3</p>
-                        <img className="nft-img" src={pepe3} alt="NFT 3" />
+      <>
+         <div className="votes-container">
+            {contestStatus && !endContestValue ? (
+               <div>
+                  <div className="nft-container">
+                     <h2 className="votes-header">
+                        Vote Your&nbsp;
+                        <span className="fav-word">Favorite...</span>
+                     </h2>
+                     <div className="img-container">
+                        <div className="img-id-text">
+                           <p className="image-id">ID: 1</p>
+                           <img className="nft-img" src={pepe1} alt="NFT 1" />
+                        </div>
+                        <div className="img-id-text">
+                           <p className="image-id">ID: 2</p>
+                           <img className="nft-img" src={pepe2} alt="NFT 2" />
+                        </div>
+                        <div className="img-id-text">
+                           <p className="image-id">ID: 3</p>
+                           <img className="nft-img" src={pepe3} alt="NFT 3" />
+                        </div>
                      </div>
                   </div>
-               </div>
-               <div className="lock-ether-container">
-                  <input
-                     type="number"
-                     id="locked-ether-input"
-                     placeholder="3000 wei"
-                     value={lockedEtherAmount}
-                     onChange={handleLockedEtherAmount}
-                  />
-                  <br />
-                  <input
-                     type="number"
-                     id="nft-id-num"
-                     placeholder="NFT ID"
-                     value={nftIdNum}
-                     onChange={handleNftIdNum}
-                  />
-                  <br />
-                  <button className="vote-btn" onClick={handleVote}>
-                     Vote
-                  </button>
-                  <br />
-               </div>
+                  <div className="lock-ether-container">
+                     <input
+                        type="number"
+                        id="locked-ether-input"
+                        placeholder="3000 wei"
+                        value={lockedEtherAmount}
+                        onChange={handleLockedEtherAmount}
+                     />
+                     <br />
+                     <input
+                        type="number"
+                        id="nft-id-num"
+                        placeholder="NFT ID"
+                        value={nftIdNum}
+                        onChange={handleNftIdNum}
+                     />
+                     <br />
+                     <button className="vote-btn" onClick={handleVote}>
+                        Vote
+                     </button>
+                     <button
+                        className="end-contest-btn"
+                        onClick={handleEndContest}
+                     >
+                        End Contest
+                     </button>
+                     <br />
+                  </div>
 
-               <div className="end-contest-container">
-                  <button
-                     className="end-contest-btn"
-                     onClick={handleEndContest}
-                  >
-                     End Contest
-                  </button>
+                  {voted && (
+                     <>
+                        <div className="voted-msg">
+                           Thanks for voting! Stay tuned for the results!
+                        </div>
+                     </>
+                  )}
                </div>
+            ) : endContestValue ? (
+               <>
+                  <div class="results-main-container">
+                     <div class="head">
+                        <h1 class="head-text">Winner: {winner}</h1>
+                     </div>
+                     <div class="results-container">
+                        <div class="result">
+                           <h3>Withdraw Prize Pool</h3>
+                           <div class="result-info">
+                              <p>Winner May Withdraw Prize Pool</p>
+                              <button
+                                 class="result-button"
+                                 onClick={handlePrizePoolWithdraw}
+                              >
+                                 Withdraw
+                              </button>
+                           </div>
+                        </div>
+                        <div class="result">
+                           <h3>Withdraw NFT</h3>
+                           <div class="result-info">
+                              <p>Contestant May Now Withdraw NFT</p>
+                              <button
+                                 class="result-button"
+                                 onClick={handleNFTWithdraw}
+                              >
+                                 Withdraw
+                              </button>
+                           </div>
+                        </div>
+                        <div class="result">
+                           <h3>Withdraw Locked Ether</h3>
+                           <div class="result-info">
+                              <p>Voters May Withdraw Locked Ether</p>
+                              <button
+                                 class="result-button"
+                                 onClick={handleLockedEtherWithdraw}
+                              >
+                                 Withdraw
+                              </button>
+                           </div>
+                        </div>
+                        <div class="result">
+                           <h3>Withdraw Submitted Ether </h3>
+                           <div class="result-info">
+                              <p>
+                                 Contestant May Withdraw Ether Contribution (Tie
+                                 Only)
+                              </p>
+                              <button
+                                 class="result-button"
+                                 onClick={handleWithdrawSubmittedEther}
+                              >
+                                 Withdraw
+                              </button>
+                           </div>
+                        </div>
+                     </div>
+                  </div>{" "}
+               </>
+            ) : (
+               <>
+                  <div className="nft-container">
+                     <h2 className="votes-header">DEMO</h2>
+                     <div className="img-container">
+                        <div className="img-id-text">
+                           <p className="image-id">ID: 1</p>
+                           <img className="nft-img" src={pepe1} alt="NFT 1" />
+                        </div>
+                        <div className="img-id-text">
+                           <p className="image-id">ID: 2</p>
+                           <img className="nft-img" src={pepe2} alt="NFT 2" />
+                        </div>
+                        <div className="img-id-text">
+                           <p className="image-id">ID: 3</p>
+                           <img className="nft-img" src={pepe3} alt="NFT 3" />
+                        </div>
+                     </div>
+                  </div>
+               </>
+            )}
+         </div>
 
-               {voted && (
-                  <>
-                     <div className="voted-msg">
-                        Thanks for voting! Stay tuned for the results!
-                     </div>
-                  </>
-               )}
-            </div>
-         ) : endContestValue ? (
-            <>
-               <div class="results-main-container">
-                  <div class="head">
-                     <h1 class="head-text">Winner: {winner}</h1>
-                  </div>
-                  <div class="results-container">
-                     <div class="result">
-                        <h3>Withdraw Prize Pool</h3>
-                        <div class="result-info">
-                           <p>Winner May Withdraw Prize Pool</p>
-                           <button
-                              class="result-button"
-                              onClick={handlePrizePoolWithdraw}
-                           >
-                              Withdraw
-                           </button>
-                        </div>
-                     </div>
-                     <div class="result">
-                        <h3>Withdraw NFT</h3>
-                        <div class="result-info">
-                           <p>Contestant May Now Withdraw NFT</p>
-                           <button
-                              class="result-button"
-                              onClick={handleNFTWithdraw}
-                           >
-                              Withdraw
-                           </button>
-                        </div>
-                     </div>
-                     <div class="result">
-                        <h3>Withdraw Locked Ether</h3>
-                        <div class="result-info">
-                           <p>Voters May Withdraw Locked Ether</p>
-                           <button
-                              class="result-button"
-                              onClick={handleLockedEtherWithdraw}
-                           >
-                              Withdraw
-                           </button>
-                        </div>
-                     </div>
-                     <div class="result">
-                        <h3>Withdraw Submitted Ether </h3>
-                        <div class="result-info">
-                           <p>
-                              Contestant May Withdraw Ether Contribution (Tie
-                              Only)
-                           </p>
-                           <button
-                              class="result-button"
-                              onClick={handleWithdrawSubmittedEther}
-                           >
-                              Withdraw
-                           </button>
-                        </div>
-                     </div>
-                  </div>
-               </div>{" "}
-            </>
-         ) : (
-            <>
-               <div className="nft-container">
-                  <h2 className="votes-header">DEMO</h2>
-                  <div className="img-container">
-                     <div className="img-id-text">
-                        <p className="image-id">ID: 1</p>
-                        <img className="nft-img" src={pepe1} alt="NFT 1" />
-                     </div>
-                     <div className="img-id-text">
-                        <p className="image-id">ID: 2</p>
-                        <img className="nft-img" src={pepe2} alt="NFT 2" />
-                     </div>
-                     <div className="img-id-text">
-                        <p className="image-id">ID: 3</p>
-                        <img className="nft-img" src={pepe3} alt="NFT 3" />
-                     </div>
-                  </div>
-               </div>
-            </>
-         )}
-      </div>
+         <div className="divider4"></div>
+
+         <footer className="footer-container">
+            <a
+               href="https://github.com/tSwizzz"
+               className="github-link"
+               target="_blank"
+            >
+               <img
+                  src={githubLogo}
+                  alt="GitHub Logo"
+                  className="github-logo"
+               />
+               Developed by Edward Ghambari
+            </a>
+         </footer>
+      </>
    );
 }
 

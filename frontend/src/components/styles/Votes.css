@@ -51,6 +51,7 @@
    gap: 22px;
    border-radius: 22px;
    padding: 22px;
+   margin-top: -80px;
 }
 
 .img-id-text {
@@ -110,12 +111,12 @@
    font-weight: bold;
    cursor: pointer;
    transition: background-color 0.3s ease, color 0.3s ease;
-   background-color: #3498db;
    color: white;
    border: none;
    border-radius: 12px;
    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.9);
    font-family: "Montserrat";
+   background-color: #3498db;
 }
 
 .vote-btn:hover {
@@ -128,7 +129,8 @@
 }
 .end-contest-btn {
    padding: 10px 30px;
-   margin-top: 60px;
+   margin-top: 20px;
+   margin-left: 50px;
    font-size: 20px;
    font-weight: bold;
    cursor: pointer;
@@ -204,4 +206,17 @@
 
 h3 {
    color: rgb(0, 255, 0);
+}
+.divider4 {
+   margin-top: -50px;
+   height: 2px;
+   background: linear-gradient(
+      to right,
+      #ff0000,
+      #ff9900,
+      #33cc33,
+      #3399ff,
+      #cc33ff
+   );
+   animation: fadeInOut 3.2s infinite;
 }
