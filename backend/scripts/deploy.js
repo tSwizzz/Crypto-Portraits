@@ -39,7 +39,7 @@ async function main() {
       "ipfs://QmRLoJidkk1CJTzgFzYNuRM8HovGzFfXfoH4ghBbHKQ8um",
       "ipfs://QmSLdumK3nZ2RdyPYu7cTfzEhf4bBXezfRzeb7Lx5oF4uS",
    ];
-   const myAddress = prizePoolSigner[0].address;
+   const myAddress = prizePoolSigner[0].address; //0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
 
    for (let k = 0; k < nftArray.length; k++) {
       await SampleNFT.mint(myAddress, k + 1, nftArray[k]);
