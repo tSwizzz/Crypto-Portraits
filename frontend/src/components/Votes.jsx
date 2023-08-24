@@ -5,12 +5,11 @@ import pepe2 from "./images/pepe2.jpg";
 import pepe3 from "./images/pepe3.jpg";
 
 import React, { useEffect, useState } from "react";
-import Submit from "./Submit.jsx";
 import {
    contestState,
    voteNFT,
    endContest,
-   prizePoolValue,
+   getWinner,
 } from "./SmartContract.jsx";
 import { displayNFTs } from "./SmartContract.jsx";
 //import { lock } from "ethers";
@@ -26,7 +25,7 @@ function Votes({ contract }) {
 
    const [voted, setVoted] = useState(false);
    const [endContestValue, setEndContestValue] = useState(false);
-   const [prizePoolVal, setPrizePoolVal] = useState("");
+   const [winner, setWinner] = useState("");
 
    useEffect(() => {
       fetchContestValue();
@@ -67,17 +66,17 @@ function Votes({ contract }) {
       } catch {}
    };
 
+   const handleWinner = async () => {
+      let winner = await getWinner();
+      if (winner === "0x0000000000000000000000000000000000000000")
+         setWinner("No Winner");
+   };
+
    const handleEndContest = async () => {
       await endContest();
       setEndContestValue(true);
       setContestStatus(false);
-      handlePrizePoolVal();
-   };
-
-   const handlePrizePoolVal = async () => {
-      let val = await prizePoolValue();
-      val = val.toString();
-      setPrizePoolVal(val);
+      handleWinner();
    };
 
    const handleLockedEtherAmount = (event) => {
@@ -152,8 +151,47 @@ function Votes({ contract }) {
                   </>
                )}
             </div>
-         ) : endContestValue && prizePoolVal == 0 ? (
-            <div className="results-container">hi</div>
+         ) : endContestValue ? (
+            <>
+               <div class="results-main-container">
+                  <div class="head">
+                     <h1 class="head-text">Winner: {winner}</h1>
+                  </div>
+                  <div class="results-container">
+                     <div class="result">
+                        <h3>Withdraw Prize Pool</h3>
+                        <div class="result-info">
+                           <p>Winner May Withdraw Prize Pool</p>
+                           <button class="result-button">Withdraw</button>
+                        </div>
+                     </div>
+                     <div class="result">
+                        <h3>Withdraw NFT</h3>
+                        <div class="result-info">
+                           <p>Contestant May Now Withdraw NFT</p>
+                           <button class="result-button">Withdraw</button>
+                        </div>
+                     </div>
+                     <div class="result">
+                        <h3>Withdraw Locked Ether</h3>
+                        <div class="result-info">
+                           <p>Voters May Withdraw Locked Ether</p>
+                           <button class="result-button">Withdraw</button>
+                        </div>
+                     </div>
+                     <div class="result">
+                        <h3>Withdraw Submitted Ether </h3>
+                        <div class="result-info">
+                           <p>
+                              Contestant May Withdraw Ether Contribution (Tie
+                              Only)
+                           </p>
+                           <button class="result-button">Withdraw</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>{" "}
+            </>
          ) : (
             <>
                <div className="nft-container">
