@@ -146,6 +146,25 @@ export async function getWinner() {
    return winner;
 }
 
+export async function prizePoolWithdraw() {
+   await getAccess();
+   await prizePoolContract.withdrawPrizePool();
+}
+
+export async function nftWithdraw() {
+   await getAccess();
+   await prizePoolContract.withdrawNFT();
+}
+
+export async function lockedEtherWithdraw() {
+   await getAccess();
+   await prizePoolContract.withdrawLockedEther();
+}
+
+export async function withdrawSubmittedEther() {
+   await getAccess();
+   await prizePoolContract.withdrawAllFunds();
+}
 function getUrl(ipfs) {
    return "http://localhost:8080/ipfs" + ipfs.split(":")[1].slice(1);
 }

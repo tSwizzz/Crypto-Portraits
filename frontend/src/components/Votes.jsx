@@ -10,11 +10,15 @@ import {
    voteNFT,
    endContest,
    getWinner,
+   prizePoolWithdraw,
+   nftWithdraw,
+   lockedEtherWithdraw,
+   withdrawSubmittedEther,
 } from "./SmartContract.jsx";
 import { displayNFTs } from "./SmartContract.jsx";
 //import { lock } from "ethers";
 
-function Votes({ contract }) {
+function Votes() {
    const [image1, setImage1] = useState(null);
    const [image2, setImage2] = useState(null);
    const [image3, setImage3] = useState(null);
@@ -77,6 +81,38 @@ function Votes({ contract }) {
       setEndContestValue(true);
       setContestStatus(false);
       handleWinner();
+   };
+
+   const handlePrizePoolWithdraw = async () => {
+      try {
+         await prizePoolWithdraw();
+      } catch (error) {
+         alert(error);
+      }
+   };
+
+   const handleNFTWithdraw = async () => {
+      try {
+         await nftWithdraw();
+      } catch (error) {
+         alert(error);
+      }
+   };
+
+   const handleLockedEtherWithdraw = async () => {
+      try {
+         await lockedEtherWithdraw();
+      } catch (error) {
+         alert(error);
+      }
+   };
+
+   const handleWithdrawSubmittedEther = async () => {
+      try {
+         await withdrawSubmittedEther();
+      } catch (error) {
+         alert(error);
+      }
    };
 
    const handleLockedEtherAmount = (event) => {
@@ -162,21 +198,36 @@ function Votes({ contract }) {
                         <h3>Withdraw Prize Pool</h3>
                         <div class="result-info">
                            <p>Winner May Withdraw Prize Pool</p>
-                           <button class="result-button">Withdraw</button>
+                           <button
+                              class="result-button"
+                              onClick={handlePrizePoolWithdraw}
+                           >
+                              Withdraw
+                           </button>
                         </div>
                      </div>
                      <div class="result">
                         <h3>Withdraw NFT</h3>
                         <div class="result-info">
                            <p>Contestant May Now Withdraw NFT</p>
-                           <button class="result-button">Withdraw</button>
+                           <button
+                              class="result-button"
+                              onClick={handleNFTWithdraw}
+                           >
+                              Withdraw
+                           </button>
                         </div>
                      </div>
                      <div class="result">
                         <h3>Withdraw Locked Ether</h3>
                         <div class="result-info">
                            <p>Voters May Withdraw Locked Ether</p>
-                           <button class="result-button">Withdraw</button>
+                           <button
+                              class="result-button"
+                              onClick={handleLockedEtherWithdraw}
+                           >
+                              Withdraw
+                           </button>
                         </div>
                      </div>
                      <div class="result">
@@ -186,7 +237,12 @@ function Votes({ contract }) {
                               Contestant May Withdraw Ether Contribution (Tie
                               Only)
                            </p>
-                           <button class="result-button">Withdraw</button>
+                           <button
+                              class="result-button"
+                              onClick={handleWithdrawSubmittedEther}
+                           >
+                              Withdraw
+                           </button>
                         </div>
                      </div>
                   </div>
