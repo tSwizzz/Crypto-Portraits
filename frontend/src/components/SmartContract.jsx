@@ -4,7 +4,7 @@ const provider = new ethers.BrowserProvider(window.ethereum);
 let signer;
 
 let prizePoolContract;
-const prizePoolAddress = "0x6C2d83262fF84cBaDb3e416D527403135D757892";
+const prizePoolAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
 const prizePoolAbi = [
    "constructor() nonpayable",
    "function allParticipants(uint256) view returns (address)",
@@ -27,7 +27,7 @@ const prizePoolAbi = [
 ];
 
 let nftContract;
-const nftAddress = "0xFD6F7A6a5c21A3f503EBaE7a473639974379c351";
+const nftAddress = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
 const nftAbi = [
    "constructor() nonpayable",
    "event Approval(address indexed owner, address indexed approved, uint256 indexed tokenId)",
