@@ -27,8 +27,9 @@ contract PrizePool {
         IERC721 nft;
         address owner;
         uint nftId;
-        uint numOfVotes; //can maybe utilize this
-        bool submitted; //participants can only submit 1 NFT per contest
+        uint numOfVotes;
+        bool submitted; //participants can only submit 1 NFT per contest. However, for the purpose of
+                        //testing / showcasing the site, this modifier will be removed.
     }
     mapping(address => NFT) public participants;
 
@@ -197,7 +198,7 @@ contract PrizePool {
     }
 
     //this basically only exists for the purpose of testing so I don't have to
-    //wait for the contest to end every time it starts lol
+    //wait for the contest to end every time it starts
     function end() external onlyOwner {
         contestEnded = true;
 

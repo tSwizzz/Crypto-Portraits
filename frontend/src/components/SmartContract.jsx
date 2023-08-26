@@ -60,6 +60,7 @@ export const connect = async () => {
    return getAccess();
 };
 
+//access to contract
 export const getAccess = async () => {
    signer = await provider.getSigner();
    prizePoolContract = new ethers.Contract(

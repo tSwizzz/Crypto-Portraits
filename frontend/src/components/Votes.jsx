@@ -75,7 +75,7 @@ function Votes() {
    const handleWinner = async () => {
       let winner = await getWinner();
       if (winner === "0x0000000000000000000000000000000000000000")
-         setWinner("No Winner");
+         setWinner("No Winner (Tie)");
    };
 
    const handleEndContest = async () => {
@@ -142,15 +142,15 @@ function Votes() {
                      <div className="img-container">
                         <div className="img-id-text">
                            <p className="image-id">ID: 1</p>
-                           <img className="nft-img" src={pepe1} alt="NFT 1" />
+                           <img className="nft-img" src={image1} alt="NFT 1" />
                         </div>
                         <div className="img-id-text">
                            <p className="image-id">ID: 2</p>
-                           <img className="nft-img" src={pepe2} alt="NFT 2" />
+                           <img className="nft-img" src={image2} alt="NFT 2" />
                         </div>
                         <div className="img-id-text">
                            <p className="image-id">ID: 3</p>
-                           <img className="nft-img" src={pepe3} alt="NFT 3" />
+                           <img className="nft-img" src={image3} alt="NFT 3" />
                         </div>
                      </div>
                   </div>
@@ -279,7 +279,7 @@ function Votes() {
 
          <footer className="footer-container">
             <a
-               href="https://github.com/tSwizzz"
+               href="https://github.com/tSwizzz/Crypto-Portraits"
                className="github-link"
                target="_blank"
             >
