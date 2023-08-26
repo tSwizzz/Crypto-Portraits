@@ -73,6 +73,7 @@ export const getAccess = async () => {
    return { signer: signer, contract: prizePoolContract };
 };
 
+//handles submitting NFT to contract
 export async function submit() {
    await getAccess();
    const id = document.getElementById("token-id").value;
@@ -90,12 +91,14 @@ export async function submit() {
       });
 }
 
+//returns a bool value to check whether or not the contest has started
 export async function contestState() {
    await getAccess();
    let value = await prizePoolContract.getBeginContestValue();
    return value;
 }
 
+//displays the 3 NFTs to the screen on the votes page
 export async function displayNFTs() {
    await getAccess();
    let idArray = await prizePoolContract.getNFTIdArray();
@@ -109,6 +112,7 @@ export async function displayNFTs() {
    return nftArray;
 }
 
+//handles user voting and locks the necessary ether required to vote
 export async function voteNFT() {
    await getAccess();
    const amount = document.getElementById("locked-ether-input").value;
@@ -122,18 +126,18 @@ export async function voteNFT() {
       }
    });
 
-   const participantAddressesArr = await prizePoolContract.getAllParticipants(); //all addresses are the same
-
-   for (let i = 0; i < participantAddressesArr.length; i++) {
-      const participantAddr = participantAddressesArr[i];
-
-      const participantData = await prizePoolContract.participants(
-         participantAddr,
-      );
-      setTimeout(() => {
-         console.log("Vote Count:", participantData[3].toString());
-      }, 12000);
-   }
+   //const participantAddressesArr = await prizePoolContract.getAllParticipants();
+   //
+   //for (let i = 0; i < participantAddressesArr.length; i++) {
+   //   const participantAddr = participantAddressesArr[i];
+   //
+   //   const participantData = await prizePoolContract.participants(
+   //      participantAddr,
+   //   );
+   //   setTimeout(() => {
+   //      console.log("Vote Count:", participantData[3].toString());
+   //   }, 12000);
+   //}
 }
 
 export async function endContest() {

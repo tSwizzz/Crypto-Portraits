@@ -19,7 +19,8 @@ async function main() {
       prizePoolSigner[0].address,
    );
 
-   //SampleNFT deployment
+   //SampleNFT deployment --> //This contract exists for the purpose of minting my own NFTs upon deployment to use to test the website.
+   //Anyone can use these to see how the site works!
    const SampleNFT = await hre.ethers.deployContract("SampleNFT");
    await SampleNFT.waitForDeployment();
 
@@ -39,13 +40,11 @@ async function main() {
       "ipfs://QmRLoJidkk1CJTzgFzYNuRM8HovGzFfXfoH4ghBbHKQ8um",
       "ipfs://QmSLdumK3nZ2RdyPYu7cTfzEhf4bBXezfRzeb7Lx5oF4uS",
    ];
-   const myAddress = prizePoolSigner[0].address; //0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+   const myAddress = prizePoolSigner[0].address; //0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266, this is the first addr on the hardhat test network
 
    for (let k = 0; k < nftArray.length; k++) {
       await SampleNFT.mint(myAddress, k + 1, nftArray[k]);
    }
-
-   console.log(await SampleNFT.balanceOf(myAddress));
 }
 
 async function writeDeploymentInfo(contract, address, filename = "", signer) {
