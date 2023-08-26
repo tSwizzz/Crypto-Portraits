@@ -44,9 +44,7 @@ function Votes() {
             setContestStatus(true);
             handleDisplayNFTs();
          }
-      } catch (error) {
-         alert(error);
-      }
+      } catch {}
    };
 
    const handleDisplayNFTs = async () => {

@@ -132,7 +132,7 @@ function Home() {
 
          <footer className="footer-container">
             <a
-               href="https://github.com/tSwizzz/Crypto-Portraits"
+               href="https://github.com/tSwizzz"
                className="github-link"
                target="_blank"
             >
