@@ -158,7 +158,9 @@ export async function prizePoolWithdraw() {
 
 export async function nftWithdraw() {
    await getAccess();
-   await prizePoolContract.withdrawNFT();
+   const id = document.getElementById("token-id").value;
+
+   await prizePoolContract.withdrawNFT(id);
 }
 
 export async function lockedEtherWithdraw() {

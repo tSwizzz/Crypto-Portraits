@@ -218,12 +218,20 @@ function Votes() {
                            <h3>Withdraw NFT</h3>
                            <div class="result-info">
                               <p>Contestant May Now Withdraw NFT</p>
-                              <button
-                                 class="result-button"
-                                 onClick={handleNFTWithdraw}
-                              >
-                                 Withdraw
-                              </button>
+                              <div className="nft-container">
+                                 <input
+                                    className="result-input"
+                                    type="number"
+                                    id="token-id"
+                                    placeholder="Token ID"
+                                 />
+                                 <button
+                                    class="result-button"
+                                    onClick={handleNFTWithdraw}
+                                 >
+                                    Withdraw
+                                 </button>
+                              </div>
                            </div>
                         </div>
                         <div class="result">
