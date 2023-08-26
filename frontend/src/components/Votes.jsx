@@ -197,26 +197,26 @@ function Votes() {
                </div>
             ) : endContestValue ? (
                <>
-                  <div class="results-main-container">
-                     <div class="head">
-                        <h1 class="head-text">Winner: {winner}</h1>
+                  <div className="results-main-container">
+                     <div className="head">
+                        <h1 className="head-text">Winner: {winner}</h1>
                      </div>
-                     <div class="results-container">
-                        <div class="result">
+                     <div className="results-container">
+                        <div className="result">
                            <h3>Withdraw Prize Pool</h3>
-                           <div class="result-info">
+                           <div className="result-info">
                               <p>Winner May Withdraw Prize Pool</p>
                               <button
-                                 class="result-button"
+                                 className="result-button"
                                  onClick={handlePrizePoolWithdraw}
                               >
                                  Withdraw
                               </button>
                            </div>
                         </div>
-                        <div class="result">
+                        <div className="result">
                            <h3>Withdraw NFT</h3>
-                           <div class="result-info">
+                           <div className="result-info">
                               <p>Contestant May Now Withdraw NFT</p>
                               <div className="nft-container">
                                  <input
@@ -226,7 +226,7 @@ function Votes() {
                                     placeholder="Token ID"
                                  />
                                  <button
-                                    class="result-button"
+                                    className="result-button"
                                     onClick={handleNFTWithdraw}
                                  >
                                     Withdraw
@@ -234,27 +234,27 @@ function Votes() {
                               </div>
                            </div>
                         </div>
-                        <div class="result">
+                        <div className="result">
                            <h3>Withdraw Locked Ether</h3>
-                           <div class="result-info">
+                           <div className="result-info">
                               <p>Voters May Withdraw Locked Ether</p>
                               <button
-                                 class="result-button"
+                                 className="result-button"
                                  onClick={handleLockedEtherWithdraw}
                               >
                                  Withdraw
                               </button>
                            </div>
                         </div>
-                        <div class="result">
+                        <div className="result">
                            <h3>Withdraw Submitted Ether </h3>
-                           <div class="result-info">
+                           <div className="result-info">
                               <p>
                                  Contestant May Withdraw Ether Contribution (Tie
                                  Only)
                               </p>
                               <button
-                                 class="result-button"
+                                 className="result-button"
                                  onClick={handleWithdrawSubmittedEther}
                               >
                                  Withdraw
@@ -295,8 +295,8 @@ function Votes() {
             ) : (
                showDemoResultsPage && (
                   <>
-                     <div class="results-main-container">
-                        <div class="head">
+                     <div className="results-main-container">
+                        <div className="head">
                            <h1
                               style={{
                                  marginBottom: "50px",
@@ -305,15 +305,15 @@ function Votes() {
                            >
                               DEMO RESULTS
                            </h1>
-                           <h1 class="head-text">Winner: N/A</h1>
+                           <h1 className="head-text">Winner: N/A</h1>
                         </div>
-                        <div class="results-container">
-                           <div class="result">
+                        <div className="results-container">
+                           <div className="result">
                               <h3>Withdraw Prize Pool</h3>
-                              <div class="result-info">
+                              <div className="result-info">
                                  <p>Winner May Withdraw Prize Pool</p>
                                  <button
-                                    class="result-button"
+                                    className="result-button"
                                     style={{
                                        cursor: "not-allowed",
                                     }}
@@ -322,12 +322,12 @@ function Votes() {
                                  </button>
                               </div>
                            </div>
-                           <div class="result">
+                           <div className="result">
                               <h3>Withdraw NFT</h3>
-                              <div class="result-info">
+                              <div className="result-info">
                                  <p>Contestant May Now Withdraw NFT</p>
                                  <button
-                                    class="result-button"
+                                    className="result-button"
                                     style={{
                                        cursor: "not-allowed",
                                     }}
@@ -336,12 +336,12 @@ function Votes() {
                                  </button>
                               </div>
                            </div>
-                           <div class="result">
+                           <div className="result">
                               <h3>Withdraw Locked Ether</h3>
-                              <div class="result-info">
+                              <div className="result-info">
                                  <p>Voters May Withdraw Locked Ether</p>
                                  <button
-                                    class="result-button"
+                                    className="result-button"
                                     style={{
                                        cursor: "not-allowed",
                                     }}
@@ -350,15 +350,15 @@ function Votes() {
                                  </button>
                               </div>
                            </div>
-                           <div class="result">
+                           <div className="result">
                               <h3>Withdraw Submitted Ether </h3>
-                              <div class="result-info">
+                              <div className="result-info">
                                  <p>
                                     Contestant May Withdraw Ether Contribution
                                     (Tie Only)
                                  </p>
                                  <button
-                                    class="result-button"
+                                    className="result-button"
                                     style={{
                                        cursor: "not-allowed",
                                     }}
