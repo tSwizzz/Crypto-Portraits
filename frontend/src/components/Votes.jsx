@@ -32,6 +32,8 @@ function Votes() {
    const [endContestValue, setEndContestValue] = useState(false);
    const [winner, setWinner] = useState("");
 
+   const [showDemoResultsPage, setShowDemoResultsPage] = useState(false);
+
    useEffect(() => {
       fetchContestValue();
    }, []);
@@ -117,6 +119,10 @@ function Votes() {
       } catch (error) {
          alert(error);
       }
+   };
+
+   const handleShowDemoResultsPage = () => {
+      setShowDemoResultsPage(true);
    };
 
    const handleLockedEtherAmount = (event) => {
@@ -250,7 +256,7 @@ function Votes() {
                      </div>
                   </div>{" "}
                </>
-            ) : (
+            ) : !showDemoResultsPage ? (
                <>
                   <div className="nft-container">
                      <h2 className="votes-header">DEMO</h2>
@@ -268,8 +274,79 @@ function Votes() {
                            <img className="nft-img" src={pepe3} alt="NFT 3" />
                         </div>
                      </div>
+                     <div className="results-demo-container">
+                        <button
+                           className="results-demo-btn"
+                           onClick={handleShowDemoResultsPage}
+                        >
+                           Results Page Demo
+                        </button>
+                     </div>
                   </div>
                </>
+            ) : (
+               showDemoResultsPage && (
+                  <>
+                     <div class="results-main-container">
+                        <div class="head">
+                           <h1 class="head-text">Winner: {winner}</h1>
+                        </div>
+                        <div class="results-container">
+                           <div class="result">
+                              <h3>Withdraw Prize Pool</h3>
+                              <div class="result-info">
+                                 <p>Winner May Withdraw Prize Pool</p>
+                                 <button
+                                    class="result-button"
+                                    onClick={handlePrizePoolWithdraw}
+                                 >
+                                    Withdraw
+                                 </button>
+                              </div>
+                           </div>
+                           <div class="result">
+                              <h3>Withdraw NFT</h3>
+                              <div class="result-info">
+                                 <p>Contestant May Now Withdraw NFT</p>
+                                 <button
+                                    class="result-button"
+                                    onClick={handleNFTWithdraw}
+                                 >
+                                    Withdraw
+                                 </button>
+                              </div>
+                           </div>
+                           <div class="result">
+                              <h3>Withdraw Locked Ether</h3>
+                              <div class="result-info">
+                                 <p>Voters May Withdraw Locked Ether</p>
+                                 <button
+                                    class="result-button"
+                                    onClick={handleLockedEtherWithdraw}
+                                 >
+                                    Withdraw
+                                 </button>
+                              </div>
+                           </div>
+                           <div class="result">
+                              <h3>Withdraw Submitted Ether </h3>
+                              <div class="result-info">
+                                 <p>
+                                    Contestant May Withdraw Ether Contribution
+                                    (Tie Only)
+                                 </p>
+                                 <button
+                                    class="result-button"
+                                    onClick={handleWithdrawSubmittedEther}
+                                 >
+                                    Withdraw
+                                 </button>
+                              </div>
+                           </div>
+                        </div>
+                     </div>{" "}
+                  </>
+               )
             )}
          </div>
 
