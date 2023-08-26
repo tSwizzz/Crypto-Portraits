@@ -289,7 +289,15 @@ function Votes() {
                   <>
                      <div class="results-main-container">
                         <div class="head">
-                           <h1 class="head-text">Winner: {winner}</h1>
+                           <h1
+                              style={{
+                                 marginBottom: "50px",
+                                 marginTop: "-60px",
+                              }}
+                           >
+                              DEMO RESULTS
+                           </h1>
+                           <h1 class="head-text">Winner: N/A</h1>
                         </div>
                         <div class="results-container">
                            <div class="result">
@@ -298,7 +306,9 @@ function Votes() {
                                  <p>Winner May Withdraw Prize Pool</p>
                                  <button
                                     class="result-button"
-                                    onClick={handlePrizePoolWithdraw}
+                                    style={{
+                                       cursor: "not-allowed",
+                                    }}
                                  >
                                     Withdraw
                                  </button>
@@ -310,7 +320,9 @@ function Votes() {
                                  <p>Contestant May Now Withdraw NFT</p>
                                  <button
                                     class="result-button"
-                                    onClick={handleNFTWithdraw}
+                                    style={{
+                                       cursor: "not-allowed",
+                                    }}
                                  >
                                     Withdraw
                                  </button>
@@ -322,7 +334,9 @@ function Votes() {
                                  <p>Voters May Withdraw Locked Ether</p>
                                  <button
                                     class="result-button"
-                                    onClick={handleLockedEtherWithdraw}
+                                    style={{
+                                       cursor: "not-allowed",
+                                    }}
                                  >
                                     Withdraw
                                  </button>
@@ -337,7 +351,9 @@ function Votes() {
                                  </p>
                                  <button
                                     class="result-button"
-                                    onClick={handleWithdrawSubmittedEther}
+                                    style={{
+                                       cursor: "not-allowed",
+                                    }}
                                  >
                                     Withdraw
                                  </button>
