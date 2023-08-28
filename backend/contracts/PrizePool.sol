@@ -216,7 +216,7 @@ contract PrizePool {
             }
         }
 
-        //if winner exists, send funds to prizePool and give 10% to contract owner
+        //if winner exists, send funds to prizePool
         if (winner != address(0)) {
             for (uint k; k < allParticipants.length; k++) {
                 prizePool += potentialWithdrawBalance[allParticipants[k]];
