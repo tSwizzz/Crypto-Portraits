@@ -16,8 +16,13 @@ If a tie occurs, then there are no winners and all funds are withdrawable to par
 NFTs will be held in the contract and withdrawable after voting period ends.
 Upon deployment, 3 NFTs will be minted to the first signer address on the Hardhat network (0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266). You can see how the website works by submitting these NFTs yourself.
 
-Guide: Have MetaMask installed.
+For just a simple view of the website:
 
+1. cd frontend
+2. npm install
+3. "npm run dev", then copy 'Local' link and paste in URL
+
+For full functionality of website:
 Open terminal:
 
 1. cd backend
